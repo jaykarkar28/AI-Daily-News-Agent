@@ -1,0 +1,12 @@
+langgraph
+langchain
+langchain-google-genai
+langchain-groq
+python-dotenv
+pydantic
+httpx
+feedparser
+jinja2
+beautifulsoup4
+rich
+typing_extensions
