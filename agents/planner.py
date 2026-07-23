@@ -17,6 +17,7 @@ Categorize content.
 
 """
 import logging
+from typing import Any  
 
 from state.news_state import NewsState
 from state.models import (
@@ -63,7 +64,7 @@ def build_default_queries() -> list[SearchQuery]:
     return queries
 
 
-def planner_node(state: NewsState) -> list[SearchQuery]:
+def planner_node(state: NewsState) -> dict[str, Any]:
     """
     The planner node for the AI Daily News workflow.
 
