@@ -28,3 +28,12 @@ RSS_FEEDS = [
 REQUEST_TIMEOUT = 15
 
 USER_AGENT = "AI-Daily-News-Agent/1.0"
+
+# ------------------------------
+# Github Configuration
+# ------------------------------
+
+GITHUB_API_BASE_URL = "https://api.github.com"
+GITHUB_API_VERSION = "2022-11-28"
+GITHUB_REPOSITORIES_PER_QUERY = 10
+GITHUB_TRUST_SCORE = 0.9

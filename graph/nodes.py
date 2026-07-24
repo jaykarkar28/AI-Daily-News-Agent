@@ -7,6 +7,7 @@ Keeping node imports in one place keeps the graph builder clean and makes future
 
 from agents.planner import planner_node
 from agents.collectors.rss import rss_collector_node
+from agents.collectors.github import github_collector_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -19,4 +20,5 @@ from typing import Any, Callable
 WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "planner": planner_node,
     "rss_collector": rss_collector_node,
+    "github_collector": github_collector_node,
 }
