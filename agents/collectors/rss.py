@@ -1,19 +1,28 @@
-import logging
 from typing import Any
-import hashlib
-from datetime import datetime
+
 import feedparser
 
+from utils.logger import get_logger
+from utils.ids import generate_article_id
+from utils.datetime import parse_rss_datetime
+
 from state.news_state import NewsState
+from datetime import UTC, datetime, timedelta
+
 from agents.collectors.base import BaseCollector
-from config.settings import RSS_FEEDS
+from config.settings import (
+    RSS_FEEDS,
+    RSS_ARTICLE_MAX_AGE_DAYS,
+    RSS_MAX_ARTICLES_PER_FEED,
+)
+
 from state.models import (
     Article,
     Source,
     SourceType,
 )
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class RSSCollector(BaseCollector):
     """
@@ -33,14 +42,23 @@ class RSSCollector(BaseCollector):
 
             parsed_feed = self._fetch_feed(feed["url"])
 
-            articles.extend(
-                self._parse_feed(parsed_feed, feed)
+            parsed_articles = self._parse_feed(
+                parsed_feed,
+                feed
             )
 
-        logger.info(
-            "Collected %d RSS articles.",
-            len(articles)
-        )
+            recent_articles = self._filter_recent_articles(
+                parsed_articles,
+            )
+
+            logger.info(
+                "Kept %d/%d recent article from %s.",
+                len(recent_articles),
+                len(parsed_articles),
+                feed["name"],
+            )
+
+            articles.extend(recent_articles)
 
         return articles
     
@@ -83,7 +101,7 @@ class RSSCollector(BaseCollector):
 
     def _parse_feed(
             self,
-            parsed_feed,
+            parsed_feed: feedparser.FeedParserDict,
             feed_config: dict[str, Any],
             ) -> list[Article]:
         
@@ -127,9 +145,7 @@ class RSSCollector(BaseCollector):
                 # preventing duplicate articles across executions.
                 # --------------------------------------------------
 
-                article_id = hashlib.sha256(
-                    url.encode("utf-8")
-                ).hexdigest()
+                article_id = generate_article_id(url)
 
                 # ----------------------------------------------------
                 # Parse the publication date.
@@ -138,14 +154,9 @@ class RSSCollector(BaseCollector):
                 # In that case we fall back to the current time.
                 # ----------------------------------------------------
 
-                if hasattr(entry, "published_parsed") and entry.published_parsed:
-                    
-                    published_at = datetime(
-                        *entry.published_parsed[:6]
-                    )
-
-                else:
-                    published_at = datetime.now()
+                published_at = parse_rss_datetime(
+                    getattr(entry, "published_parsed", None)
+                )
 
                 # ----------------------------
                 # Build the Source model.
@@ -174,7 +185,7 @@ class RSSCollector(BaseCollector):
                 articles.append(article)
             
             except Exception:
-                # Skip only the current article if coversation fails.
+                # Skip only the current article if conversion fails.
                 # The remaining articles should still be processed.
                 logger.exception(
                     "Failed to parse RSS article from: '%s'.", 
@@ -182,6 +193,58 @@ class RSSCollector(BaseCollector):
                 )
             
         return articles
+    
+    def _filter_recent_articles(
+            self,
+            articles: list[Article],
+    ) -> list[Article]:
+        """
+        Keep only recent RSS articles.
+        
+        Articles older than the configured number of days and discarded. The remaining articles are stored from event newest to oldest and limited per RSS feed.
+        
+        Args:
+            articles:
+                Articles parsed from a single RSS feed.
+
+        Returns:
+            Filtered articles.
+        """
+
+        cutoff_date = datetime.now(UTC) - timedelta(
+            days = RSS_ARTICLE_MAX_AGE_DAYS,
+        )
+
+        # # Temperory debug logs
+        # logger.info(
+        #     "Cutoff date: %s",
+        #     cutoff_date,
+        # )
+
+        # for article in articles[:5]:
+        #     logger.info(
+        #         "Article: %s, Published at: %s",
+        #         article.title,
+        #         article.published_at,
+        #     )
+
+        recent_articles = [
+            article
+            for article in articles
+            if article.published_at >= cutoff_date
+        ]
+
+        recent_articles.sort(
+            key=lambda article: article.published_at,
+            reverse=True,
+        )
+
+        return recent_articles[
+            : RSS_MAX_ARTICLES_PER_FEED
+        ]
+
+
+
 
 
 

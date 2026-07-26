@@ -4,6 +4,9 @@ Application configuration.
 All configurable values should live here.
 """
 
+# ------------------------------
+# RSS CONFIGURATION
+# ------------------------------
 RSS_FEEDS = [
     {
         "name": "OpenAI",
@@ -24,6 +27,12 @@ RSS_FEEDS = [
         "is_official": True,
     },
 ]
+
+# Keep RSS articles published within the last N days.
+RSS_ARTICLE_MAX_AGE_DAYS = 7
+
+# Maximum number of articles to keep from each RSS feed.
+RSS_MAX_ARTICLES_PER_FEED = 20
 
 REQUEST_TIMEOUT = 15
 

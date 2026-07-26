@@ -135,7 +135,32 @@ class GitHubCollector(BaseCollector):
         )
 
 
+    logger.info("Searching GitHub Repositories.")
 
+    def _duplicate_articles(
+            self,
+            articles: list[Article],
+    ) -> list[Article]:
+        """
+        Remove duplicate Github repositories.
+
+        Duplicate repositories can appear beacuse multiple search queires may match the same repository.
+
+        Args:
+            articles: Parsed GitHub articles.
+
+        Returns:
+            List of unique articles.
+        """
+
+        unique_articles: dict[str, Article] = {}
+
+        for article in articles:
+            unique_articles[article.id] = article
+
+        duplicate_count = len(articles) - len(unique_articles)
+
+        return list(unique_articles.values()), duplicate_count
 
     def collect(
             self,
@@ -176,8 +201,18 @@ class GitHubCollector(BaseCollector):
                     query.query,
                     exc,
                 )
+        
+        unique_articles, duplicate_count = self._duplicate_articles(articles)
+        logger.info(
+            "Collected %d unique GitHub repositories from %d search queries (%d duplicates removed).",
+            len(unique_articles),
+            len(queries),
+            duplicate_count,
+        )
                 
-        return articles
+        return unique_articles
+
+    
 
 
 def github_collector_node(state: dict[str, Any]) -> dict[str, Any]:
