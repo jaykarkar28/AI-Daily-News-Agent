@@ -1,20 +1,23 @@
-2026-07-26 11:30:51,986 | INFO | __main__ | Workflow started.
-2026-07-26 11:30:52,142 | INFO | agents.planner | Planner node started.
-2026-07-26 11:30:52,157 | INFO | agents.planner | Planner generated 7 search queries.
-2026-07-26 11:30:52,228 | INFO | agents.collectors.rss | Reading RSS feed: OpenAI
-2026-07-26 11:30:52,259 | INFO | agents.collectors.rss | Fetching RSS feed: https://openai.com/news/rss.xml
-2026-07-26 11:30:54,035 | INFO | agents.collectors.rss | Kept 10/1050 recent article from OpenAI.
-2026-07-26 11:30:54,035 | INFO | agents.collectors.rss | Reading RSS feed: Google DeepMind
-2026-07-26 11:30:54,036 | INFO | agents.collectors.rss | Fetching RSS feed: https://blog.google/technology/ai/rss/
-2026-07-26 11:30:55,748 | INFO | agents.collectors.rss | Kept 1/20 recent article from Google DeepMind.
-2026-07-26 11:30:55,749 | INFO | agents.collectors.rss | Reading RSS feed: Hugging Face
-2026-07-26 11:30:55,749 | INFO | agents.collectors.rss | Fetching RSS feed: https://huggingface.co/blog/feed.xml
-2026-07-26 11:30:59,056 | INFO | agents.collectors.rss | Kept 3/831 recent article from Hugging Face.
-2026-07-26 11:31:12,458 | INFO | agents.collectors.github | Collected 46 unique GitHub repositories from 7 search queries (2 duplicates removed).
-2026-07-26 11:31:12,475 | INFO | __main__ | Workflow completed successfully
-2026-07-26 11:31:12,475 | INFO | __main__ | Execution ID : b5dc28bb-58af-42ed-98b7-ee5815e3420e
-2026-07-26 11:31:12,476 | INFO | __main__ | Status       : pending
-2026-07-26 11:31:12,476 | INFO | __main__ | Articles     : 60
-2026-07-26 11:31:12,477 | INFO | __main__ | Queries      : 7
-2026-07-26 11:31:12,477 | INFO | __main__ | 
+2026-07-27 21:47:15,438 | INFO | __main__ | Workflow started.
+2026-07-27 21:47:15,452 | INFO | agents.planner | Planner node started.
+2026-07-27 21:47:15,453 | INFO | agents.planner | Planner generated 7 search queries.
+2026-07-27 21:47:15,454 | INFO | agents.collectors.rss | Reading RSS feed: OpenAI
+2026-07-27 21:47:15,454 | INFO | agents.collectors.rss | Fetching RSS feed: https://openai.com/news/rss.xml
+2026-07-27 21:47:16,454 | INFO | agents.collectors.rss | Kept 10/1051 recent article from OpenAI.
+2026-07-27 21:47:16,454 | INFO | agents.collectors.rss | Reading RSS feed: Google DeepMind
+2026-07-27 21:47:16,455 | INFO | agents.collectors.rss | Fetching RSS feed: https://blog.google/technology/ai/rss/
+2026-07-27 21:47:17,655 | INFO | agents.collectors.rss | Kept 1/20 recent article from Google DeepMind.
+2026-07-27 21:47:17,656 | INFO | agents.collectors.rss | Reading RSS feed: Hugging Face
+2026-07-27 21:47:17,656 | INFO | agents.collectors.rss | Fetching RSS feed: https://huggingface.co/blog/feed.xml
+2026-07-27 21:47:18,544 | INFO | agents.collectors.rss | Kept 3/831 recent article from Hugging Face.
+2026-07-27 21:47:28,601 | INFO | agents.collectors.github | Collected 46 unique GitHub repositories from 7 search queries (2 duplicates removed).
+2026-07-27 21:47:28,604 | INFO | agents.deduplicator | Deduplicator node started.
+2026-07-27 21:47:28,604 | INFO | agents.deduplicator | Deduplicating 60 collected articles
+2026-07-27 21:47:28,605 | INFO | agents.deduplicator | Deduplicated 60 articles into 60 unique articles (0 duplicates removed).
+2026-07-27 21:47:28,606 | INFO | __main__ | Workflow completed successfully
+2026-07-27 21:47:28,607 | INFO | __main__ | Execution ID : 41e6deb9-a7a1-487e-92ab-bdaff25a8c8d
+2026-07-27 21:47:28,608 | INFO | __main__ | Status       : pending
+2026-07-27 21:47:28,608 | INFO | __main__ | Articles     : 120
+2026-07-27 21:47:28,609 | INFO | __main__ | Queries      : 7
+2026-07-27 21:47:28,609 | INFO | __main__ | 
 ============================================================

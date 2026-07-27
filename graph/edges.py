@@ -17,7 +17,7 @@ def register_edges(workflow: StateGraph[NewsState]) -> None:
     
     Current workflow:
     
-    START -> planner -> rss_collector -> github_collector -> END
+    START -> planner -> rss_collector -> github_collector -> Deduplictor node -> END
     
     Args:
         workflow: LangGraph workflow instance.
@@ -26,4 +26,5 @@ def register_edges(workflow: StateGraph[NewsState]) -> None:
     workflow.add_edge(START, "planner")
     workflow.add_edge("planner", "rss_collector")
     workflow.add_edge("rss_collector", "github_collector")
-    workflow.add_edge("github_collector", END)
+    workflow.add_edge("github_collector", "deduplicator")
+    workflow.add_edge("deduplicator", END)

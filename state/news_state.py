@@ -32,7 +32,7 @@ class NewsState(TypedDict):
     articles: Annotated[
         list[Article],
         merge_articles,
-    ]
+    ] 
 
     newsletter: Newsletter | None
 
