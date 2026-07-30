@@ -4,7 +4,7 @@ Global Article Ranking Node
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from config.settings import(
@@ -83,8 +83,9 @@ class ArticleRanker:
             self,
             article: Article,
     ) -> float:
-
-        age = (datetime.now() - article.published_at).days  
+        
+        current_time = datetime.now(timezone.utc)
+        age = (current_time - article.published_at).days  
 
         score = max(
             0.0,
@@ -98,16 +99,17 @@ class ArticleRanker:
             article: Article,
     ) -> float:
 
-        search_text = (
-            article.title.lower()
-            + " "
-            + " ".join(article.tags).lower()
-        )
+        search_text = " ".join(
+            [
+            article.title,
+            *article.tags,
+            ]
+        ).lower()
 
         best_score = 0.0
 
-        for keyeord, score in RANKING_KEYWORDS.items():
-            if keyeord in search_text:
+        for keyword, score in RANKING_KEYWORDS.items():
+            if keyword in search_text:
                 best_score = max(best_score, score)
 
         return best_score
@@ -125,8 +127,8 @@ class ArticleRanker:
 
 
 def ranking_node(
-        state: dict[str, Any]
-) -> dict[str, Any]:
+        state: NewsState
+) -> NewsState:
 
     """
     Global article ranking node.
@@ -136,9 +138,9 @@ def ranking_node(
 
     ranker = ArticleRanker()
 
-    ranked_articles = ranker.rank_articles(state["articles"])
+    ranked_articles = ranker.rank_articles(state["processed_articles"])
 
     return{
         **state,
-        "articles": ranked_articles,
+        "processed_articles": ranked_articles,
     }
