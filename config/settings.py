@@ -46,3 +46,29 @@ GITHUB_API_BASE_URL = "https://api.github.com"
 GITHUB_API_VERSION = "2022-11-28"
 GITHUB_REPOSITORIES_PER_QUERY = 10
 GITHUB_TRUST_SCORE = 0.9
+
+
+# ------------------------------
+# Ranking Configuration
+# ------------------------------
+
+RANKING_TRUST_WEIGHT = 0.40
+RANKING_FRESHNESS_WEIGHT = 0.30
+RANKING_KEYWORD_WEIGHT = 0.30
+
+RANKING_KEYWORDS = {
+    "gpt": 1.0,
+    "openai": 1.0,
+    "gemini": 1.0,
+    "claude": 1.0,
+    "anthropic": 0.95,
+    "deepmind": 0.95,
+    "llama": 0.90,
+    "langgraph": 0.90,
+    "langchain": 0.85,
+    "agent": 0.80,
+    "reasoning": 0.80,
+    "mcp": 0.75,
+}
+
+FRESHNESS_MAX_DAYS = 7

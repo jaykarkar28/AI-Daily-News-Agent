@@ -79,5 +79,5 @@ def deduplicator_node(
 
     return {
         **state,
-        "articles": unique_articles,
+        "processed_articles": unique_articles,
     }

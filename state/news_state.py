@@ -28,11 +28,16 @@ class NewsState(TypedDict):
     """
 
     search_queries: list[SearchQuery]
-
+    
+    # Raw articles collected from all sources.
     articles: Annotated[
         list[Article],
         merge_articles,
     ] 
+
+    # Articles used by the processing pipeline
+    # (deduplication, ranking, categorization, summarization).
+    processed_articles: list[Article]
 
     newsletter: Newsletter | None
 

@@ -115,11 +115,11 @@ class Article(BaseModel):
         description="Keywords"
     )
 
-    relevance_score: float = Field(
+    ranking_score: float = Field(
         default=0.0,
         ge=0.0,
         le=1.0,
-        description="Importance score"
+        description="Final ranking score assigned by the Ranking Agent."
     )
 
     trust_score: float = Field(
