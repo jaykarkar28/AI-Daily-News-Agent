@@ -28,4 +28,5 @@ def register_edges(workflow: StateGraph[NewsState]) -> None:
     workflow.add_edge("rss_collector", "github_collector")
     workflow.add_edge("github_collector", "deduplicator")
     workflow.add_edge("deduplicator", "ranking")
-    workflow.add_edge("ranking", END)
+    workflow.add_edge("ranking", "categorizer")
+    workflow.add_edge("categorizer", END)

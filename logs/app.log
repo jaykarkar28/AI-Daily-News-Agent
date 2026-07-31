@@ -1,28 +1,32 @@
-2026-07-30 23:35:48,064 | INFO | __main__ | Workflow started.
-2026-07-30 23:35:48,095 | INFO | agents.planner | Planner node started.
-2026-07-30 23:35:48,095 | INFO | agents.planner | Planner generated 7 search queries.
-2026-07-30 23:35:48,097 | INFO | agents.collectors.rss | Reading RSS feed: OpenAI
-2026-07-30 23:35:48,098 | INFO | agents.collectors.rss | Fetching RSS feed: https://openai.com/news/rss.xml
-2026-07-30 23:35:49,118 | INFO | agents.collectors.rss | Kept 6/1056 recent article from OpenAI.
-2026-07-30 23:35:49,118 | INFO | agents.collectors.rss | Reading RSS feed: Google DeepMind
-2026-07-30 23:35:49,118 | INFO | agents.collectors.rss | Fetching RSS feed: https://blog.google/technology/ai/rss/
-2026-07-30 23:35:50,272 | INFO | agents.collectors.rss | Kept 3/20 recent article from Google DeepMind.
-2026-07-30 23:35:50,272 | INFO | agents.collectors.rss | Reading RSS feed: Hugging Face
-2026-07-30 23:35:50,273 | INFO | agents.collectors.rss | Fetching RSS feed: https://huggingface.co/blog/feed.xml
-2026-07-30 23:35:51,386 | INFO | agents.collectors.rss | Kept 5/834 recent article from Hugging Face.
-2026-07-30 23:36:00,265 | INFO | agents.collectors.github | Collected 46 unique GitHub repositories from 7 search queries (2 duplicates removed).
-2026-07-30 23:36:00,266 | INFO | agents.deduplicator | Deduplicator node started.
-2026-07-30 23:36:00,266 | INFO | agents.deduplicator | Deduplicating 60 collected articles
-2026-07-30 23:36:00,266 | INFO | agents.deduplicator | Deduplicated 60 articles into 60 unique articles (0 duplicates removed).
-2026-07-30 23:36:00,267 | INFO | agents.ranking | Ranking node started.
-2026-07-30 23:36:00,267 | INFO | agents.ranking | Ranking 60 collected articles.
-2026-07-30 23:36:00,269 | INFO | agents.ranking | Top ranked article: Advancing the price-performance frontier with GPT-5.6 (score: 1.000)
-2026-07-30 23:36:00,269 | INFO | agents.ranking | Ranking Completed.
-2026-07-30 23:36:00,270 | INFO | __main__ | Workflow completed successfully
-2026-07-30 23:36:00,270 | INFO | __main__ | Execution ID : 964ca86e-2f3d-411f-882a-10689862469d
-2026-07-30 23:36:00,271 | INFO | __main__ | Status       : pending
-2026-07-30 23:36:00,271 | INFO | __main__ | Collected Articles : 240
-2026-07-30 23:36:00,271 | INFO | __main__ | Processed Articles : 60
-2026-07-30 23:36:00,271 | INFO | __main__ | Queries      : 7
-2026-07-30 23:36:00,271 | INFO | __main__ | 
+2026-07-31 10:41:52,964 | INFO | __main__ | Workflow started.
+2026-07-31 10:41:53,030 | INFO | agents.planner | Planner node started.
+2026-07-31 10:41:53,034 | INFO | agents.planner | Planner generated 7 search queries.
+2026-07-31 10:41:53,037 | INFO | agents.collectors.rss | Reading RSS feed: OpenAI
+2026-07-31 10:41:53,038 | INFO | agents.collectors.rss | Fetching RSS feed: https://openai.com/news/rss.xml
+2026-07-31 10:41:55,129 | INFO | agents.collectors.rss | Kept 7/1057 recent article from OpenAI.
+2026-07-31 10:41:55,129 | INFO | agents.collectors.rss | Reading RSS feed: Google DeepMind
+2026-07-31 10:41:55,129 | INFO | agents.collectors.rss | Fetching RSS feed: https://blog.google/technology/ai/rss/
+2026-07-31 10:41:56,462 | INFO | agents.collectors.rss | Kept 3/20 recent article from Google DeepMind.
+2026-07-31 10:41:56,463 | INFO | agents.collectors.rss | Reading RSS feed: Hugging Face
+2026-07-31 10:41:56,465 | INFO | agents.collectors.rss | Fetching RSS feed: https://huggingface.co/blog/feed.xml
+2026-07-31 10:41:58,338 | INFO | agents.collectors.rss | Kept 5/834 recent article from Hugging Face.
+2026-07-31 10:42:10,605 | INFO | agents.collectors.github | Collected 45 unique GitHub repositories from 7 search queries (3 duplicates removed).
+2026-07-31 10:42:10,607 | INFO | agents.deduplicator | Deduplicator node started.
+2026-07-31 10:42:10,608 | INFO | agents.deduplicator | Deduplicating 60 collected articles
+2026-07-31 10:42:10,609 | INFO | agents.deduplicator | Deduplicated 60 articles into 60 unique articles (0 duplicates removed).
+2026-07-31 10:42:10,611 | INFO | agents.ranking | Ranking node started.
+2026-07-31 10:42:10,612 | INFO | agents.ranking | Ranking 60 collected articles.
+2026-07-31 10:42:10,620 | INFO | agents.ranking | Top ranked article: Advancing the price-performance frontier with GPT-5.6 (score: 1.000)
+2026-07-31 10:42:10,620 | INFO | agents.ranking | Ranking Completed.
+2026-07-31 10:42:10,622 | INFO | agents.categorizer | Starting Categorizer Agent...
+2026-07-31 10:42:10,622 | INFO | agents.categorizer | Categorizing 60 articles...
+2026-07-31 10:42:10,625 | INFO | agents.categorizer | Successfully categorized 60 articles.
+2026-07-31 10:42:10,626 | INFO | agents.categorizer | Categorizer Agent completed.
+2026-07-31 10:42:10,631 | INFO | __main__ | Workflow completed successfully
+2026-07-31 10:42:10,633 | INFO | __main__ | Execution ID : 09970961-21d8-4dcd-87c8-0f0873f3f104
+2026-07-31 10:42:10,633 | INFO | __main__ | Status       : pending
+2026-07-31 10:42:10,636 | INFO | __main__ | Collected Articles : 240
+2026-07-31 10:42:10,637 | INFO | __main__ | Processed Articles : 60
+2026-07-31 10:42:10,637 | INFO | __main__ | Queries      : 7
+2026-07-31 10:42:10,637 | INFO | __main__ | 
 ============================================================

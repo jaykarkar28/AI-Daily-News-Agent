@@ -4,6 +4,8 @@ Application configuration.
 All configurable values should live here.
 """
 
+from state.models import Category
+
 # ------------------------------
 # RSS CONFIGURATION
 # ------------------------------
@@ -73,3 +75,90 @@ RANKING_KEYWORDS = {
 
 FRESHNESS_MAX_DAYS = 7
 RANKING_MAX_ARTICLES = 50
+
+
+# ------------------------------
+# Category Configuration
+# ------------------------------
+
+CATEGORY_KEYWORDS = {
+
+    Category.MODEL: [
+        "gpt",
+        "gpt-4",
+        "gpt-5",
+        "gemini",
+        "claude",
+        "llama",
+        "mistral",
+        "qwen",
+        "phi",
+        "deepseek",
+        "grok",
+    ],
+
+    Category.AGENT: [
+        "agent",
+        "assistant",
+        "langgraph",
+        "langchain",
+        "crewai",
+        "autogen",
+        "multi-agent",
+        "workflow",
+    ],
+
+    Category.RESEARCH: [
+        "research",
+        "paper",
+        "preprint",
+        "arxiv",
+        "benchmark",
+        "reasoning",
+        "rag",
+        "evaluation",
+        "dataset",
+        "training",
+    ],
+
+    Category.OPEN_SOURCE: [
+        "github",
+        "hugging face",
+        "huggingface",
+        "open source",
+        "repository",
+        "model weights",
+    ],
+
+    Category.TOOL: [
+        "sdk",
+        "cli",
+        "tool",
+        "plugin",
+        "mcp",
+        "api",
+        "extension",
+    ],
+
+    Category.INFRASTRUCTURE: [
+        "deployment",
+        "serving",
+        "inference",
+        "gpu",
+        "cloud",
+        "docker",
+        "kubernetes",
+        "vllm",
+        "onnx",
+    ],
+
+    Category.COMPANY: [
+        "openai",
+        "google",
+        "deepmind",
+        "anthropic",
+        "meta",
+        "microsoft",
+        "xai",
+    ],
+}

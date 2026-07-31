@@ -10,6 +10,7 @@ from agents.collectors.rss import rss_collector_node
 from agents.deduplicator import deduplicator_node
 from agents.collectors.github import github_collector_node
 from agents.ranking import ranking_node
+from agents.categorizer import categorizer_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -25,4 +26,5 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "github_collector": github_collector_node,
     "deduplicator": deduplicator_node,
     "ranking": ranking_node,
+    "categorizer": categorizer_node,
 }

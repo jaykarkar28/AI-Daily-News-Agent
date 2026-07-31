@@ -21,16 +21,14 @@ class Category(str, Enum):
     Defines the category of an AI news article.
     """
 
-    MODEL_RELEASE = "Model Release"
+    MODEL = "Model"
+    AGENT = "Agent"
     RESEARCH = "Research"
     OPEN_SOURCE = "Open Source"
-    COMPANY_UPDATE = "Company Update"
-    FUNDING = "Funding"
-    HARDWARE = "Hardware"
-    AI_TOOL = "AI Tool"
-    ROBOTICS = "Robotics"
-    POLICY = "Policy"
-    SECURITY = "Security"
+    TOOL = "Tool"
+    INFRASTRUCTURE = "Infrastructure"
+    COMPANY = "Company"
+    OTHER = "Other"
 
 class Source(BaseModel):
     """
