@@ -162,3 +162,19 @@ CATEGORY_KEYWORDS = {
         "xai",
     ],
 }
+
+
+
+# ------------------------------
+# Gemini Configuration
+# ------------------------------
+
+GEMINI_MODEL = "gemini-2.5-flash"
+
+GEMINI_TEMPERATURE = 0.2
+
+GEMINI_MAX_OUTPUT_TOKENS = 512
+
+GEMINI_TIMEOUT = 30
+
+GEMINI_MAX_RETRIES = 3
