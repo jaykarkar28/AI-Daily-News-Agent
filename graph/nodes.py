@@ -13,6 +13,7 @@ from agents.ranking import ranking_node
 from agents.categorizer import categorizer_node
 from agents.summarizer import summarize_node
 from agents.selection import selection_node
+from agents.newsletter import newsletter_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -31,4 +32,5 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "categorizer": categorizer_node,
     "selection": selection_node,
     "summarizer": summarize_node,
+    "newsletter": newsletter_node,
 }

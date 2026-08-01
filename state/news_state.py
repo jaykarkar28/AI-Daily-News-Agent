@@ -43,4 +43,6 @@ class NewsState(TypedDict):
 
     execution_info: ExecutionInfo  
 
+    newsletter: Newsletter
+
 

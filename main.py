@@ -59,6 +59,33 @@ def main() -> None:
             if article.summary
         ),
     )
+
+    newsletter = final_state.get(
+        "newslletter",
+    )
+
+    if newsletter:
+
+        logger.info(
+            "Newsletter Title: %s",
+            newsletter.title,
+        )
+
+        logger.info(
+            "Newsletter Date: %s",
+            newsletter.newsletter_date,
+        )
+
+        logger.info(
+            "Newsletter Articles: %d",
+            len(newsletter.articles),
+        )
+
+        logger.info(
+            "Markdown Size: %d characters",
+            len(newsletter.markdown_content or ""),
+        )
+
     logger.info("\n" + "=" * 60)
 
 if __name__ == "__main__":

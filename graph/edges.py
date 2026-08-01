@@ -31,4 +31,5 @@ def register_edges(workflow: StateGraph[NewsState]) -> None:
     workflow.add_edge("ranking", "categorizer")
     workflow.add_edge("categorizer", "selection")
     workflow.add_edge("selection", "summarizer")
-    workflow.add_edge("summarizer", END)
+    workflow.add_edge("summarizer", "newsletter")
+    workflow.add_edge("newsletter", END)
