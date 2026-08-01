@@ -11,9 +11,7 @@ from services.llm_service import llm_service
 
 from utils.logger import get_logger
 from utils.prompt_loader import load_prompt
-from config.settings import (
-    SUMMARY_MAX_ARTICLES,
-)
+
 
 logger = get_logger(__name__)
 
@@ -37,8 +35,6 @@ class ArticleSummarizer:
         Returns:
             Articles with generated summaries.
         """
-
-        articles = articles[:SUMMARY_MAX_ARTICLES]
 
         logger.info(
             "Summarizing %d articles...",

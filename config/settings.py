@@ -4,7 +4,10 @@ Application configuration.
 All configurable values should live here.
 """
 
-from state.models import Category
+from state.models import (
+    Category,
+    SourceGroup,
+)
 
 # ------------------------------
 # RSS CONFIGURATION
@@ -13,18 +16,21 @@ RSS_FEEDS = [
     {
         "name": "OpenAI",
         "url": "https://openai.com/news/rss.xml",
+        "group": SourceGroup.OFFICIAL,
         "trust_score": 1.0,
         "is_official": True,
     },
     {
         "name": "Google DeepMind",
         "url": "https://blog.google/technology/ai/rss/",
+        "group": SourceGroup.OFFICIAL,
         "trust_score": 0.95,
         "is_official": True,
     },
     {
         "name": "Hugging Face",
         "url": "https://huggingface.co/blog/feed.xml",
+        "group": SourceGroup.OPEN_SOURCE,
         "trust_score": 0.95,
         "is_official": True,
     },
@@ -163,12 +169,6 @@ CATEGORY_KEYWORDS = {
     ],
 }
 
-# ------------------------------
-# Summarizer Configuration
-# ------------------------------
-
-SUMMARY_MAX_ARTICLES = 30
-
 
 # ------------------------------
 # Gemini Configuration
@@ -197,3 +197,19 @@ GROQ_MAX_OUTPUT_TOKENS = 300
 
 GROQ_MAX_RETRIES = 3
 
+# ------------------------------
+# Newsletter Configuration
+# ------------------------------
+
+# Maximum number of articles selected
+# from each editorial source group.
+
+NEWSLETTER_TOTAL_ARTICLES = 30
+
+SOURCE_GROUP_QUOTAS = {
+    SourceGroup.OFFICIAL: 10,
+    SourceGroup.RESEARCH: 6,
+    SourceGroup.OPEN_SOURCE: 6,
+    SourceGroup.AI_NEWS: 4,
+    SourceGroup.COMMUNITY: 4,
+}

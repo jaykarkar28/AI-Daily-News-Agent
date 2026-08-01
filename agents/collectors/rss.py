@@ -165,6 +165,7 @@ class RSSCollector(BaseCollector):
                     name=feed_config["name"],
                     url=feed_config["url"],
                     source_type=SourceType.RSS,
+                    group=feed_config["group"],
                     is_official=feed_config["is_official"],
                     trust_score=feed_config["trust_score"],
                 )

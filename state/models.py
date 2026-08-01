@@ -16,6 +16,22 @@ class SourceType(str, Enum):
     ARXIV = "arxiv"
     WEB_SEARCH = "web_search"
 
+
+class SourceGroup(str, Enum):
+    """
+        Editorial grouping of a news source.
+
+        Used by the Selection Agent to maintain
+        balanced representation across different
+        types of AI news sources.
+    """
+
+    OFFICIAL = "official"
+    RESEARCH = "research"
+    OPEN_SOURCE = "open_source"
+    AI_NEWS = "ai_news"
+    COMMUNITY = "community"
+
 class Category(str, Enum):
     """
     Defines the category of an AI news article.
@@ -48,6 +64,11 @@ class Source(BaseModel):
     source_type: SourceType = Field(
         ...,
         description="Type of source"
+    )
+
+    group: SourceGroup = Field(
+        ...,
+        description="Editorial grouping used by the Selection Agent."
     )
 
     is_official: bool = Field(

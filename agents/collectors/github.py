@@ -26,6 +26,7 @@ from state.models import (
     Category,
     Source,
     SourceType,
+    SourceGroup,
 )
 from utils.datetime import parse_iso_datetime
 from utils.ids import generate_article_id
@@ -114,6 +115,7 @@ class GitHubCollector(BaseCollector):
             name="GitHub",
             url="https://github.com",
             source_type=SourceType.GITHUB,
+            group=SourceGroup.OPEN_SOURCE,
             is_official=False,
             trust_score=GITHUB_TRUST_SCORE,
         )
@@ -130,7 +132,7 @@ class GitHubCollector(BaseCollector):
             content=None,
             category=Category.OPEN_SOURCE,
             tags = repository.get("topics", []),
-            relevance_score = 0.0,
+            ranking_score = 0.0,
             trust_score = source.trust_score,
         )
 
