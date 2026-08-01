@@ -163,6 +163,11 @@ CATEGORY_KEYWORDS = {
     ],
 }
 
+# ------------------------------
+# Summarizer Configuration
+# ------------------------------
+
+SUMMARY_MAX_ARTICLES = 30
 
 
 # ------------------------------
@@ -178,3 +183,17 @@ GEMINI_MAX_OUTPUT_TOKENS = 512
 GEMINI_TIMEOUT = 30
 
 GEMINI_MAX_RETRIES = 3
+
+
+# ------------------------------
+# Groq Configuration
+# ------------------------------
+
+GROQ_MODEL = "openai/gpt-oss-20b"
+
+GROQ_TEMPERATURE = 0.2
+
+GROQ_MAX_OUTPUT_TOKENS = 300
+
+GROQ_MAX_RETRIES = 3
+

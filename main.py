@@ -47,10 +47,18 @@ def main() -> None:
     
     logger.info("Workflow completed successfully")
     logger.info(f"Execution ID : {final_state['execution_info'].execution_id}")
-    logger.info(f"Status       : {final_state['execution_info'].execution_status.value}")
+    logger.info(f"Status: {final_state['execution_info'].execution_status.value}")
     logger.info(f"Collected Articles : {len(final_state['articles'])}")
     logger.info(f"Processed Articles : {len(final_state['processed_articles'])}")
-    logger.info(f"Queries      : {len(final_state['search_queries'])}")
+    logger.info(f"Queries : {len(final_state['search_queries'])}")
+    logger.info(
+        "Summarized Articles: %d",
+        sum(
+            1 
+            for article in final_state['processed_articles'] 
+            if article.summary
+        ),
+    )
     logger.info("\n" + "=" * 60)
 
 if __name__ == "__main__":
