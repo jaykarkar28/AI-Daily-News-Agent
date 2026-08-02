@@ -9,6 +9,8 @@ from state.models import (
     SourceGroup,
 )
 
+import os
+
 # ------------------------------
 # RSS CONFIGURATION
 # ------------------------------
@@ -54,6 +56,113 @@ GITHUB_API_BASE_URL = "https://api.github.com"
 GITHUB_API_VERSION = "2022-11-28"
 GITHUB_REPOSITORIES_PER_QUERY = 10
 GITHUB_TRUST_SCORE = 0.9
+
+
+
+# ------------------------------
+# GitHub Quality Filter
+# ------------------------------
+
+# Minimum score required for a GitHub repository
+# to be considered AI-related.
+GITHUB_MIN_AI_SCORE = 8
+
+
+# AI-related keywords used while scoring repositories.
+GITHUB_AI_KEYWORDS = [
+
+    # Core AI
+    "ai",
+    "artificial intelligence",
+    "machine learning",
+    "deep learning",
+    "neural network",
+
+    # LLM
+    "llm",
+    "gpt",
+    "gemini",
+    "claude",
+    "llama",
+    "mistral",
+    "qwen",
+    "deepseek",
+
+    # Agentic AI
+    "agent",
+    "agentic",
+    "langgraph",
+    "langchain",
+    "crewai",
+    "autogen",
+
+    # RAG
+    "rag",
+    "retrieval",
+    "embedding",
+    "vector",
+    "vectordb",
+    "faiss",
+    "chroma",
+    "pinecone",
+
+    # AI Concepts
+    "reasoning",
+    "prompt",
+    "prompt engineering",
+    "transformer",
+    "attention",
+    "multimodal",
+    "vision",
+    "ocr",
+    "speech",
+    "inference",
+    "fine-tuning",
+]
+
+
+# Trusted GitHub organizations.
+# Repositories from these owners receive
+# additional score.
+GITHUB_TRUSTED_OWNERS = [
+
+    "openai",
+    "langchain-ai",
+    "huggingface",
+    "microsoft",
+    "google",
+    "google-deepmind",
+    "meta-llama",
+    "mistralai",
+    "vllm-project",
+    "crewAIInc",
+]
+
+
+# Keywords that indicate the repository
+# is probably NOT AI-related.
+GITHUB_BLACKLIST_KEYWORDS = [
+
+    "crypto",
+    "bitcoin",
+    "ethereum",
+
+    "war",
+    "iran",
+
+    "movie",
+    "music",
+    "anime",
+
+    "football",
+    "soccer",
+
+    "game",
+    "gaming",
+
+    "weather",
+    "ecommerce",
+]
 
 
 # ------------------------------
@@ -189,12 +298,25 @@ GEMINI_MAX_RETRIES = 3
 # Groq Configuration
 # ------------------------------
 
+GROQ_API_KEYS = [
+    os.getenv("GROQ_API_KEY_PRIMARY"),
+    os.getenv("GROQ_API_KEY_BACKUP"),
+]
+
+# Remove empty keys
+GROQ_API_KEYS = [
+    key
+    for key in GROQ_API_KEYS
+    if key
+]
+
 GROQ_MODEL = "openai/gpt-oss-20b"
 
 GROQ_TEMPERATURE = 0.2
 
 GROQ_MAX_OUTPUT_TOKENS = 300
 
+# Number of attempts per key
 GROQ_MAX_RETRIES = 3
 
 # ------------------------------

@@ -15,6 +15,7 @@ from agents.summarizer import summarize_node
 from agents.selection import selection_node
 from agents.newsletter import newsletter_node
 from agents.writer import writer_node
+from agents.github_filter import github_filter_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -35,4 +36,5 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "summarizer": summarize_node,
     "newsletter": newsletter_node,
     "writer": writer_node,
+    "github_filter": github_filter_node,
 }
