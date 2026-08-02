@@ -17,6 +17,7 @@ from agents.newsletter import newsletter_node
 from agents.writer import writer_node
 from agents.github_filter import github_filter_node
 from agents.html_generator import html_generator_node
+from agents.email_sender import email_sender_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -39,4 +40,5 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "newsletter": newsletter_node,
     "html_generator": html_generator_node,
     "writer": writer_node,
+    "email_sender": email_sender_node,
 }

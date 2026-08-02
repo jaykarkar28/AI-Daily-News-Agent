@@ -1,0 +1,2389 @@
+
+    <!DOCTYPE html>
+
+    <html lang="en">
+
+    <head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Daily News</title>
+
+    <style>
+
+    *{
+
+        box-sizing:border-box;
+
+    }
+
+    html{
+
+        scroll-behavior:smooth;
+
+    }
+
+    body{
+
+        margin:0;
+
+        padding:0;
+
+        background:#f3f6fb;
+
+        color:#111827;
+
+        font-family:
+            "Segoe UI",
+            Inter,
+            Arial,
+            sans-serif;
+
+    }
+
+    /* ---------------------------- */
+    /* Container */
+    /* ---------------------------- */
+
+    .container{
+
+        max-width:1100px;
+
+        margin:40px auto;
+
+        background:#ffffff;
+
+        border-radius:18px;
+
+        overflow:hidden;
+
+        box-shadow:
+            0 12px 40px rgba(0,0,0,.08);
+
+        animation:
+            fadeIn .6s ease;
+
+    }
+
+    /* ---------------------------- */
+    /* Header */
+    /* ---------------------------- */
+
+    .header{
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #4f46e5
+            );
+
+        color:white;
+
+        padding:55px;
+
+        box-shadow:
+            0 8px 30px rgba(0,0,0,.15);
+
+    }
+
+    .header h1{
+
+        margin:0;
+
+        font-size:40px;
+
+        font-weight:700;
+
+    }
+
+    .subtitle{
+
+        margin-top:14px;
+
+        font-size:24px;
+
+        font-weight:500;
+
+        opacity:.95;
+
+    }
+
+    .description{
+
+        margin-top:24px;
+
+        max-width:760px;
+
+        font-size:17px;
+
+        line-height:1.8;
+
+        opacity:.92;
+
+    }
+
+    .header-date{
+
+        display:inline-block;
+
+        margin-top:28px;
+
+        padding:12px 22px;
+
+        background:rgba(255,255,255,.18);
+
+        border-radius:10px;
+
+        font-size:16px;
+
+        font-weight:600;
+
+    }
+
+    /* ---------------------------- */
+    /* Dashboard */
+    /* ---------------------------- */
+
+    .stats{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        gap:20px;
+
+        padding:35px;
+
+        background:#ffffff;
+
+        border-bottom:1px solid #e5e7eb;
+
+    }
+
+    .stat-card{
+
+        flex:1;
+
+        background:#f8fafc;
+
+        border-radius:14px;
+
+        padding:24px;
+
+        text-align:center;
+
+        box-shadow:
+            0 2px 10px rgba(0,0,0,.05);
+
+        transition:
+            transform .25s ease,
+            box-shadow .25s ease;
+
+    }
+
+    .stat-card:hover{
+
+        transform:translateY(-4px);
+
+        box-shadow:
+            0 10px 25px rgba(37,99,235,.12);
+
+    }
+
+    .stat-title{
+
+        color:#6b7280;
+
+        font-size:14px;
+
+        margin-bottom:10px;
+
+    }
+
+    .stat-value{
+
+        color:#2563eb;
+
+        font-size:28px;
+
+        font-weight:700;
+
+    }
+
+    /* ---------------------------- */
+    /* Sections */
+    /* ---------------------------- */
+
+    .section{
+
+        padding:40px;
+
+    }
+
+    .section-title{
+
+        color:#2563eb;
+
+        font-size:28px;
+
+        margin-bottom:30px;
+
+        padding-left:15px;
+
+        padding-bottom:10px;
+
+        border-left:6px solid #2563eb;
+
+        border-bottom:2px solid #dbeafe;
+
+    }
+
+    /* ---------------------------- */
+    /* Articles */
+    /* ---------------------------- */
+
+    .article{
+
+        background:#ffffff;
+
+        border:1px solid #e5e7eb;
+
+        border-radius:16px;
+
+        padding:24px;
+
+        margin-bottom:35px;
+
+        transition:
+            transform .25s ease,
+            box-shadow .25s ease;
+
+    }
+
+    .article:hover{
+
+        transform:translateY(-4px);
+
+        box-shadow:
+            0 12px 30px rgba(37,99,235,.12);
+
+    }
+
+    .article h3{
+
+        margin-top:0;
+
+        color:#111827;
+
+        font-size:24px;
+
+    }
+
+    .meta{
+
+        color:#6b7280;
+
+        font-size:14px;
+
+        margin-bottom:16px;
+
+    }
+    
+    .badges{
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+        gap:10px;
+
+        margin-bottom:20px;
+
+    }
+
+    .badge{
+
+        display:inline-flex;
+
+        align-items:center;
+
+        gap:6px;
+
+        padding:8px 14px;
+
+        border-radius:999px;
+
+        background:#eef4ff;
+
+        color:#2563eb;
+
+        font-size:13px;
+
+        font-weight:600;
+
+        border:1px solid #dbeafe;
+
+    }
+
+    .badge.source{
+
+        background:#eff6ff;
+
+    }
+
+    .badge.category{
+
+        background:#f5f3ff;
+
+        color:#7c3aed;
+
+    }
+
+    .badge.date{
+
+        background:#f0fdf4;
+
+        color:#15803d;
+
+    }
+
+    .badge.score{
+
+        background:#fff7ed;
+
+        color:#ea580c;
+
+    }
+
+    .summary{
+
+        font-size:16px;
+
+        color:#374151;
+
+        line-height:1.8;
+
+    }
+
+    /* ---------------------------- */
+    /* Button */
+    /* ---------------------------- */
+
+    .button{
+
+        display:inline-block;
+
+        margin-top:20px;
+
+        padding:12px 24px;
+
+        background:#2563eb;
+
+        color:white;
+
+        text-decoration:none;
+
+        border-radius:10px;
+
+        font-weight:600;
+
+        box-shadow:
+            0 4px 12px rgba(37,99,235,.25);
+
+        transition:
+            background .2s ease,
+            transform .2s ease;
+
+    }
+
+    .button:hover{
+
+        background:#1d4ed8;
+
+        transform:translateY(-2px);
+
+    }
+
+    /* ---------------------------- */
+    /* Footer */
+    /* ---------------------------- */
+
+    .footer{
+
+        background:#111827;
+
+        color:white;
+
+        padding:35px;
+
+        text-align:center;
+
+        font-size:14px;
+
+        line-height:1.8;
+
+    }
+
+    /* ---------------------------- */
+    /* Animation */
+    /* ---------------------------- */
+
+    @keyframes fadeIn{
+
+        from{
+
+            opacity:0;
+
+            transform:translateY(20px);
+
+        }
+
+        to{
+
+            opacity:1;
+
+            transform:translateY(0);
+
+        }
+
+    }
+
+    /* ---------------------------- */
+    /* Mobile */
+    /* ---------------------------- */
+
+    @media(max-width:768px){
+        
+        .header-date{
+
+            width:100%;
+
+            text-align:center;
+
+        }
+
+        .button{
+
+            width:100%;
+
+            text-align:center;
+
+        }
+
+        .badges{
+
+            justify-content:center;
+
+        }
+
+        .container{
+
+            margin:15px;
+
+        }
+
+        .header{
+
+            padding:35px;
+
+        }
+
+        .header h1{
+
+            font-size:32px;
+
+        }
+
+        .subtitle{
+
+            font-size:20px;
+
+        }
+
+        .description{
+
+            font-size:15px;
+
+        }
+
+        .stats{
+
+            flex-direction:column;
+
+        }
+
+        .section{
+
+            padding:24px;
+
+        }
+
+        .article{
+
+            padding:18px;
+
+        }
+
+        .article h3{
+
+            font-size:20px;
+
+        }
+
+    }
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <div class="container">
+
+    <div class="header">
+
+    <h1>
+    🤖 AI Daily News
+    </h1>
+
+    <h2 class="subtitle">
+    Daily AI Intelligence Brief
+    </h2>
+
+    <p class="description">
+
+    Stay updated with the latest breakthroughs in
+    Artificial Intelligence, Large Language Models,
+    Research, Open Source projects,
+    and Industry News.
+
+    </p>
+
+    <div class="header-date">
+
+    📅 August 03, 2026
+
+    </div>
+
+    </div>
+
+    
+
+    <div class="stats">
+
+    <div class="stat-card">
+        <div class="stat-title">
+            📰 Articles
+        </div>
+        <div class="stat-value">
+            30
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">
+            📂 Sections
+        </div>
+        <div class="stat-value">
+            2
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">
+            🏢 Official
+        </div>
+        <div class="stat-value">
+            10
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">
+            💻 Open Source
+        </div>
+        <div class="stat-value">
+            20
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-title">
+            🕒 Generated
+        </div>
+        <div class="stat-value">
+            Aug 03, 2026 • 12:01 AM
+        </div>
+    </div>
+
+</div>
+
+    
+
+    <div class="section">
+
+                <h2
+                    class="section-title"
+                    style="
+                        color:#2563EB;
+                        border-left-color:#2563EB;
+                    "
+                >
+                🏢 Official Updates
+                </h2>
+                
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Advancing the price-performance frontier with GPT-5.6
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 30, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟡 High
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            OpenAI introduces GPT‑5.6 with reduced pricing for Luna and Terra, enabling enterprises to scale AI workflows more cost‑effectively thanks to the model’s improved efficiency.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 How avatarin built a 24/7 retail agent with GPT-Realtime
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 30, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟡 High
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Avatarin deployed a 24/7 multilingual retail agent powered by OpenAI’s GPT‑Realtime for Yamada Denki shoppers. Within two weeks, 30,000 users interacted with the agent, and a post‑interaction survey reported a 92 % satisfaction rate.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/avatarin"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Accelerating scientific discovery with ChatGPT for Academic Researchers
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 29, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟡 High
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            OpenAI will grant 100,000 academic researchers free access to its most advanced ChatGPT models, aiming to speed up scientific research, collaboration, and discovery.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/chatgpt-for-academic-researchers"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 How GPT-5.6 fuses frontier intelligence with frontier efficiency
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 29, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟡 High
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            GPT‑5.6 enhances efficiency across models, inference, and agentic workflows, increasing useful intelligence output per dollar.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Gemini API Managed Agents: 3.6 Flash, hooks, and more
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 Google DeepMind
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 28, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟡 High
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Google has released Gemini 3.6 for its Managed Agents, adding new features such as Flash, hooks, and triggers to enhance agent functionality and integration capabilities.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Scientific computing in the age of agentic AI
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Agent
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 28, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Scientists are employing AI coding agents to streamline scientific computing, speeding software development and accelerating discoveries, particularly in genomics, according to a recent field report.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/scientific-computing-agentic-ai"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Ten advances in mathematics and theoretical computer science
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Company
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 01, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            OpenAI announced new results addressing long-standing open problems in mathematics and theoretical computer science, with progress reported in geometry, cryptography, and complexity.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/ten-advances-in-mathematics"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Advancing responsible AI across Europe
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Company
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 31, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            OpenAI outlines its safety, security, transparency, and provenance practices to support responsible AI governance in Europe, with ongoing work as the EU AI Act progresses.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/advancing-responsible-ai-across-europe"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Building abundant intelligence
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Other
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 31, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            The article outlines a full‑stack strategy aimed at enhancing AI capabilities, reducing costs, and expanding accessibility.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/building-abundant-intelligence"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Univé builds an AI-ready workforce
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 OpenAI
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 31, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Univé leveraged ChatGPT Enterprise to develop an AI‑ready workforce, integrating leadership, responsible governance, and employee‑driven innovation to scale work transformation.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://openai.com/index/unive"
+                target="_blank"
+            >
+
+            📖 Read Full Article →
+
+            </a>
+
+            </div>
+
+            
+</div>
+<div class="section">
+
+                <h2
+                    class="section-title"
+                    style="
+                        color:#16A34A;
+                        border-left-color:#16A34A;
+                    "
+                >
+                💻 Open Source
+                </h2>
+                
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 rishabhpatre/content-generator-agent
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟢 Excellent
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            An autonomous AI agent automatically transforms the latest Arxiv research papers and news feeds into professional LinkedIn posts designed for virality.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/rishabhpatre/content-generator-agent"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Maninae/claude-reads-the-news
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟢 Excellent
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Claude now offers daily reflections on current events, providing concise summaries and insights to help users process news.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/Maninae/claude-reads-the-news"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Kiraaa1/ArXic-AI-Paper-Digest-Agent
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟢 Excellent
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Daily AI research digest, automated. Pulls the latest cs.AI, cs.LG, and cs.CL papers from ArXiv every morning, summarises each with GPT-4o-mini, and commits a clean markdown digest to the repo. Zero infrastructure, runs entirely on GitHub Actions.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/Kiraaa1/ArXic-AI-Paper-Digest-Agent"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 lakshmidath-S/AI_News_Agent
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Agent
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟢 Excellent
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            An AI agent is being developed to automatically retrieve the latest AI news, process the content, and email summaries to a list of Gmail subscribers.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/lakshmidath-S/AI_News_Agent"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 nrkoka786/agentgap
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Agent
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 31, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟡 High
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            AgentGap is an AI ecosystem intelligence platform that identifies emerging infrastructure opportunities by analyzing GitHub repositories, issues, discussions, and developer trends.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/nrkoka786/agentgap"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 Hugging Face
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Agent
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 27, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            The article outlines a technical timeline of a Frontier Lab Agent intrusion that occurred in July 2026.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://huggingface.co/blog/agent-intrusion-technical-timeline"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 sngeth/reporadar
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Agent
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Weekly curation of trending GitHub repositories focused on AI, agents, and developer tools.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/sngeth/reporadar"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 martin-k-m/beacon
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Open Source
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Beacon is an open‑source platform that leverages AI to analyze GitHub repositories, delivering insights into repository health, activity levels, contributor dynamics, and emerging trend patterns.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/martin-k-m/beacon"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 JersonUCB/github-trending-ai-pipeline
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Research
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            An Apify Actor automates extraction, cleaning, and structuring of GitHub trending AI repositories, preparing the data for large‑language‑model ingestion and retrieval‑augmented generation pipelines.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/JersonUCB/github-trending-ai-pipeline"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 tkys/github-alt-trends
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Open Source
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            A static site displays trending GitHub repositories that are not AI or LLM projects, ranking them by growth and contributor activity.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/tkys/github-alt-trends"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 m96-chan/ai_research_dashboard
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Research
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            The AI Research Dashboard automatically updates hourly, aggregating the latest AI/ML papers, models, repositories, trends, and news.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/m96-chan/ai_research_dashboard"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 kaur009/daily-research
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            An autonomous AI agent employs Google Gemini 2.5 Flash to scout, read, and summarize the latest computer science research papers each day.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/kaur009/daily-research"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 alanyom/arxiv-ai-digest
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Research
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            A tool that scrapes arXiv for the latest AI research, curates the most impactful papers, and highlights essential foundational reading.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/alanyom/arxiv-ai-digest"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 ZW471/daily-ai-research-trends
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Research
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            The repository delivers automated daily reviews of the latest AI and ML research papers, tracking emerging trends and summarizing key findings.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/ZW471/daily-ai-research-trends"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 April2040/ai_news
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Other
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            The article contains no substantive content beyond a placeholder instruction to collect latest AI news from a website.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/April2040/ai_news"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 lakshminarasi-arch/NewinAI
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Other
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            The source delivers daily summaries of AI news.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/lakshminarasi-arch/NewinAI"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 rogerbasler/latest-ai-news
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Other
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 02, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Weekly AI news podcast and website offering international English coverage of AI developments.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/rogerbasler/latest-ai-news"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 yuanzhe-jia/ai-paper-reader
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Research
+
+            </span>
+
+            <span class="badge date">
+
+            📅 August 01, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            A repository named “ai-paper-reader” by yuanzhe‑jia offers AI researchers a way to keep up with the latest research papers.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/yuanzhe-jia/ai-paper-reader"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 SAGAR-3/Research-Papers
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Research
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 31, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            Research Papers AI is a curated repository of cutting‑edge AI research papers, providing insights into recent advancements and trends in the field.
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/SAGAR-3/Research-Papers"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+
+
+            <div class="article">
+
+            <h3>
+
+            🚀 amansharma2005/RAG-using-Langchain-Mistral-AI-and-Weviate-DB
+
+            </h3>
+
+            <div class="badges">
+
+            <span class="badge source">
+
+            🏢 GitHub
+
+            </span>
+
+            <span class="badge category">
+
+            📂 Model
+
+            </span>
+
+            <span class="badge date">
+
+            📅 July 01, 2026
+
+            </span>
+
+            <span class="badge score">
+
+            ⭐ 🟠 Medium
+
+            </span>
+
+            </div>
+
+            <div class="summary">
+
+            A production-ready Retrieval-Augmented Generation (RAG) pipeline built using LangChain, Hugging Face embeddings, a Weaviate Cloud Vector database, and Mistral AI&#x27;s `mistral-small-latest` model. This pipeline facilitates context-aware, low-latency, and accurate question-answering capabilities anchored on custom document files (PDFs).
+
+            </div>
+
+            <a
+                class="button"
+                href="https://github.com/amansharma2005/RAG-using-Langchain-Mistral-AI-and-Weviate-DB"
+                target="_blank"
+            >
+
+            💻 View Repository →
+
+            </a>
+
+            </div>
+
+            
+</div>
+
+    <div class="footer">
+
+    <strong>🤖 AI Daily News Agent</strong>
+
+    <br><br>
+
+    Powered by <strong>LangGraph • Groq • Python</strong>
+
+    <br><br>
+
+    Generated automatically for your daily AI insights.
+
+    <br><br>
+
+    © 2026 Jay Karkar
+
+    </div>
+
+    </div>
+
+    </body>
+
+    </html>
+    

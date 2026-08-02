@@ -136,6 +136,15 @@ def main() -> None:
             "Saved HTML Newsletter : %s",
             html_output_path,
         )
+    
+    email_sent = final_state.get(
+        "email_sent",
+    )
+    
+    logger.info(
+        "Email Sent: %s",
+        email_sent,
+    )
 
     logger.info("\n" + "=" * 60)
 

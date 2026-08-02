@@ -335,3 +335,16 @@ SOURCE_GROUP_QUOTAS = {
     SourceGroup.AI_NEWS: 4,
     SourceGroup.COMMUNITY: 4,
 }
+
+
+# ------------------------------
+# Email Configuration
+# ------------------------------
+
+EMAIL_SMTP_SERVER = "smtp.gmail.com"
+
+EMAIL_SMTP_PORT = 587
+
+EMAIL_TIMEOUT = 30
+
+EMAIL_SUBJECT = "🤖 AI Daily News"

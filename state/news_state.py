@@ -47,6 +47,12 @@ class NewsState(TypedDict):
 
     # Saved newsletter file path
     output_path: str
+    
+    # Saved HTML newsletter path
+    html_output_path: str
+    
+    # Email delivery status
+    email_sent: bool
 
     # Workflow metadata
     execution_info: ExecutionInfo
