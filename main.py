@@ -126,6 +126,17 @@ def main() -> None:
             output_path,
         )
 
+    html_output_path = final_state.get(
+        "html_output_path",
+    )
+
+    if html_output_path:
+
+        logger.info(
+            "Saved HTML Newsletter : %s",
+            html_output_path,
+        )
+
     logger.info("\n" + "=" * 60)
 
 if __name__ == "__main__":

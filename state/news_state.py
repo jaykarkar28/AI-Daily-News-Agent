@@ -42,6 +42,9 @@ class NewsState(TypedDict):
     # Generated newsletter
     newsletter: Newsletter
 
+    # HTML content for the newsletter
+    html_content: str
+
     # Saved newsletter file path
     output_path: str
 

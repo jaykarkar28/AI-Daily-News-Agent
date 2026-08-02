@@ -23,16 +23,20 @@ class NewsletterWriter:
     def save(
             self,
             newsletter: Newsletter,
-    ) -> Path:
+            html_content: str,
+    ) -> tuple[Path, Path]:
         """
         Save anewsletter
         
         Args:
             newsletter:
                 Generated newsletter
+            html_content:
+                Generated HTML newsletter
 
         Returns:
-            Path of the saved file.
+            Tuple containing:
+                (markdown_path, html_path)
         """
 
         # --------------- Create Output Directory --------------- #
@@ -46,27 +50,51 @@ class NewsletterWriter:
         )
 
         # --------------- Build filename --------------- #
-        filename = (
+        markdown_filename = (
             f"AI_Daily_News_"
             f"{newsletter.newsletter_date}.md"
         )
 
-        output_path = (
-            output_directory / filename
+        markdown_path = (
+            output_directory / markdown_filename
         )
 
         # --------------- Write markdown --------------- #
-        output_path.write_text(
+        markdown_path.write_text(
             newsletter.markdown_content or "",
             encoding="utf-8",
         )
 
         logger.info(
             "Newsletter saved to: %s",
-            output_path,
+            markdown_path,
         )
 
-        return output_path
+        # For the HTML
+
+        html_filename = (
+            f"AI_Daily_News_"
+            f"{newsletter.newsletter_date}.html"
+        )
+
+        html_path = (
+            output_directory / html_filename
+        )
+
+        html_path.write_text(
+            html_content,
+            encoding="utf-8",
+        )
+
+        logger.info(
+            "HTML newsletter saved to: %s",
+            html_path,
+        )
+
+        return (
+            markdown_path, 
+            html_path,
+        )
 
 
 writer = NewsletterWriter()
@@ -85,8 +113,9 @@ def writer_node(
         "Starting Writer Agent..."
     )
 
-    output_path = writer.save(
-        state["newsletter"]
+    markdown_path, html_path = writer.save(
+        state["newsletter"],
+        state["html_content"]
     )
 
     logger.info(
@@ -94,5 +123,6 @@ def writer_node(
     )
 
     return{
-        "output_path": str(output_path),
+        "output_path": str(markdown_path),
+        "html_path": str(html_path),
     }
