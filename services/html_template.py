@@ -310,23 +310,15 @@ def get_html_template() -> str:
     
     .badges{
 
-        display:flex;
-
-        flex-wrap:wrap;
-
-        gap:10px;
-
-        margin-bottom:20px;
+        margin:15px 0;
 
     }
 
     .badge{
 
-        display:inline-flex;
+        display:inline-block;
 
-        align-items:center;
-
-        gap:6px;
+        margin:4px;
 
         padding:8px 14px;
 
@@ -341,6 +333,12 @@ def get_html_template() -> str:
         font-weight:600;
 
         border:1px solid #dbeafe;
+
+        max-width:100%;
+
+        box-sizing:border-box;
+
+        word-break:break-word;
 
     }
 
@@ -412,6 +410,15 @@ def get_html_template() -> str:
         transition:
             background .2s ease,
             transform .2s ease;
+
+    }
+    
+    .button:link,
+    .button:visited{
+
+        color:#ffffff !important;
+
+        text-decoration:none !important;
 
     }
 
@@ -489,15 +496,33 @@ def get_html_template() -> str:
 
         }
 
+        .badge{
+
+            display:inline-block !important;
+
+            width:calc(50% - 12px) !important;
+
+            box-sizing:border-box;
+
+            margin:4px !important;
+
+            text-align:center !important;
+
+            white-space:normal !important;
+
+            word-break:break-word !important;
+
+        }
+        
         .badges{
-
-            justify-content:center;
-
+            text-align:center !important;
         }
 
         .container{
 
-            margin:15px;
+            max-width:980px;
+            width:100%;
+            margin:30px auto;
 
         }
 
