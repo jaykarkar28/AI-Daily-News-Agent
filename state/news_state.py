@@ -20,29 +20,32 @@ def merge_articles(
 class NewsState(TypedDict):
     """
     Shared workflow state for the AI Daily News Agent.
-    
+
     Every LangGraph node receives this state,
     reads the data it needs,
     updates its own fields,
     and returns the updated state.
     """
 
+    # Planner
     search_queries: list[SearchQuery]
-    
-    # Raw articles collected from all sources.
+
+    # Raw articles collected from all collectors
     articles: Annotated[
         list[Article],
         merge_articles,
-    ] 
+    ]
 
-    # Articles used by the processing pipeline
-    # (deduplication, ranking, categorization, summarization).
+    # Processed articles flowing through the pipeline
     processed_articles: list[Article]
 
-    newsletter: Newsletter | None
-
-    execution_info: ExecutionInfo  
-
+    # Generated newsletter
     newsletter: Newsletter
+
+    # Saved newsletter file path
+    output_path: str
+
+    # Workflow metadata
+    execution_info: ExecutionInfo
 
 

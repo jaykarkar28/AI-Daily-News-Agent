@@ -14,6 +14,7 @@ from agents.categorizer import categorizer_node
 from agents.summarizer import summarize_node
 from agents.selection import selection_node
 from agents.newsletter import newsletter_node
+from agents.writer import writer_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -33,4 +34,5 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "selection": selection_node,
     "summarizer": summarize_node,
     "newsletter": newsletter_node,
+    "writer": writer_node,
 }

@@ -86,6 +86,17 @@ def main() -> None:
             len(newsletter.markdown_content or ""),
         )
 
+    output_path = final_state.get(
+        "output_path",
+    )
+
+    if output_path:
+
+        logger.info(
+            "Saved Newsletter : %s",
+            output_path,
+        )
+
     logger.info("\n" + "=" * 60)
 
 if __name__ == "__main__":
