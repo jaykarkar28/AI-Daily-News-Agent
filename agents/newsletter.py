@@ -120,7 +120,7 @@ class NewsletterGenerator:
             ],
     ) -> str:
         """
-        Build markdown newsletter
+        Build the markdown newsletter
 
         Args:
             grouped_articles:
@@ -136,16 +136,26 @@ class NewsletterGenerator:
         #  Newsletter header
         # -----------------------
 
-        markdown.append("# AI Daily News")
+        markdown.append("# 🤖 AI Daily News")
+
+        markdown.append("")
 
         markdown.append(
-            f"**Date:** {date.today():%B %d, %Y}"
+            f"**📅 Date:** {date.today():%B %d, %Y}"
         )
 
         markdown.append("")
-        markdown.append("---")
+
+        markdown.append(
+            "Your daily digest of the most important AI news, "
+            "research, open-source projects, and industry updates."
+        )
+
         markdown.append("")
 
+        markdown.append("---")
+
+        markdown.append("")
 
         # -----------------------
         # Markdown sections
@@ -175,40 +185,60 @@ class NewsletterGenerator:
             for article in articles:
 
                 markdown.append(
-                    f"### {article.title}"
+                    f"### 🚀 {article.title}"
+                )
+
+                markdown.append("")
+
+                markdown.append(
+                    f"🏢 **Source:** {article.source.name}"
+                )
+
+                markdown.append("")
+
+                if article.category:
+
+                    markdown.append(
+                        f"📂 **Category:** {article.category.value}"
+                    )
+
+                    markdown.append("")
+
+                markdown.append(
+                    f"📅 **Published:** "
+                    f"{article.published_at:%B %d, %Y}"
+                )
+
+                markdown.append("")
+
+                markdown.append(
+                    "📝 **Summary**"
                 )
 
                 markdown.append("")
 
                 markdown.append(
                     article.summary
-                    or "No summary available."
+                    or "Summary unavailable."
                 )
 
                 markdown.append("")
 
                 markdown.append(
-                    f"**Source**: {article.source.name}"
-                )
-
-                markdown.append(
-                    f"**Link:** {article.url}"
+                    f"🔗 **Read More:** {article.url}"
                 )
 
                 markdown.append("")
+
                 markdown.append("---")
+
                 markdown.append("")
-        
+                        
         logger.info(
-            "generated markdown newsletter."
+            "Generated markdown newsletter."
         )
 
         return "\n".join(markdown)
-
-
-
-
-    
 
 newsletter_generator = NewsletterGenerator()
 
@@ -222,7 +252,7 @@ def newsletter_node(
     """
 
     logger.info(
-        "starting NewsLetter Agent..."
+        "Starting NewsLetter Agent..."
     )
 
     newsletter = newsletter_generator.generate(

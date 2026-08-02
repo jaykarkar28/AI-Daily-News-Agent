@@ -1,240 +1,216 @@
-2026-08-02 10:43:20,512 | INFO | __main__ | Workflow started.
-2026-08-02 10:43:20,554 | INFO | agents.planner | Planner node started.
-2026-08-02 10:43:20,559 | INFO | agents.planner | Planner generated 7 search queries.
-2026-08-02 10:43:20,561 | INFO | agents.collectors.rss | Reading RSS feed: OpenAI
-2026-08-02 10:43:20,561 | INFO | agents.collectors.rss | Fetching RSS feed: https://openai.com/news/rss.xml
-2026-08-02 10:43:21,668 | INFO | agents.collectors.rss | Kept 12/1105 recent article from OpenAI.
-2026-08-02 10:43:21,668 | INFO | agents.collectors.rss | Reading RSS feed: Google DeepMind
-2026-08-02 10:43:21,668 | INFO | agents.collectors.rss | Fetching RSS feed: https://blog.google/technology/ai/rss/
-2026-08-02 10:43:22,922 | INFO | agents.collectors.rss | Kept 3/20 recent article from Google DeepMind.
-2026-08-02 10:43:22,922 | INFO | agents.collectors.rss | Reading RSS feed: Hugging Face
-2026-08-02 10:43:22,922 | INFO | agents.collectors.rss | Fetching RSS feed: https://huggingface.co/blog/feed.xml
-2026-08-02 10:43:23,831 | INFO | agents.collectors.rss | Kept 5/834 recent article from Hugging Face.
-2026-08-02 10:43:32,198 | INFO | agents.collectors.github | Collected 46 unique GitHub repositories from 7 search queries (2 duplicates removed).
-2026-08-02 10:43:32,203 | INFO | agents.deduplicator | Deduplicator node started.
-2026-08-02 10:43:32,204 | INFO | agents.deduplicator | Deduplicating 66 collected articles
-2026-08-02 10:43:32,205 | INFO | agents.deduplicator | Deduplicated 66 articles into 66 unique articles (0 duplicates removed).
-2026-08-02 10:43:32,207 | INFO | agents.ranking | Ranking node started.
-2026-08-02 10:43:32,208 | INFO | agents.ranking | Ranking 66 collected articles.
-2026-08-02 10:43:32,211 | INFO | agents.ranking | Top ranked article: rishabhpatre/content-generator-agent (score: 0.960)
-2026-08-02 10:43:32,211 | INFO | agents.ranking | Ranking Completed.
-2026-08-02 10:43:32,214 | INFO | agents.categorizer | Starting Categorizer Agent...
-2026-08-02 10:43:32,214 | INFO | agents.categorizer | Categorizing 66 articles...
-2026-08-02 10:43:32,217 | INFO | agents.categorizer | Successfully categorized 66 articles.
-2026-08-02 10:43:32,218 | INFO | agents.categorizer | Categorizer Agent completed.
-2026-08-02 10:43:32,220 | INFO | agents.selection | Starting Selection Agent...
-2026-08-02 10:43:32,222 | INFO | agents.selection | Starting article selection...
-2026-08-02 10:43:32,224 | INFO | agents.selection | Grouped 66 articles into 2 source groups.
-2026-08-02 10:43:32,227 | INFO | agents.selection | official: selected 10/10 articles.
-2026-08-02 10:43:32,228 | INFO | agents.selection | research: selected 0/6 articles.
-2026-08-02 10:43:32,229 | INFO | agents.selection | open_source: selected 6/6 articles.
-2026-08-02 10:43:32,229 | INFO | agents.selection | ai_news: selected 0/4 articles.
-2026-08-02 10:43:32,229 | INFO | agents.selection | community: selected 0/4 articles.
-2026-08-02 10:43:32,230 | INFO | agents.selection | Selected 16 articles after applying quotas.
-2026-08-02 10:43:32,230 | INFO | agents.selection | Backfilled 14 articles.
-2026-08-02 10:43:32,230 | INFO | agents.selection | Final newsletter contains 30 articles.
-2026-08-02 10:43:32,230 | INFO | agents.selection | Selected 30 articles for newsletter.
-2026-08-02 10:43:32,231 | INFO | agents.selection | Selection Agent completed.
-2026-08-02 10:43:32,232 | INFO | agents.summarizer | Starting Summarizer Agent...
-2026-08-02 10:43:32,248 | INFO | agents.summarizer | Summarizing 30 articles...
-2026-08-02 10:43:32,254 | INFO | agents.summarizer | [1/30] Summarizing article: Advancing the price-performance frontier with GPT-5.6
-2026-08-02 10:43:32,257 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:32,755 | INFO | services.llm_service | Groq client initialized successfully.
-2026-08-02 10:43:34,245 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:34,295 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:34,296 | INFO | agents.summarizer | Summarized: Advancing the price-performance frontier with GPT-5.6
-2026-08-02 10:43:34,296 | INFO | agents.summarizer | [2/30] Summarizing article: How avatarin built a 24/7 retail agent with GPT-Realtime
-2026-08-02 10:43:34,297 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:34,953 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:34,958 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:34,958 | INFO | agents.summarizer | Summarized: How avatarin built a 24/7 retail agent with GPT-Realtime
-2026-08-02 10:43:34,959 | INFO | agents.summarizer | [3/30] Summarizing article: Accelerating scientific discovery with ChatGPT for Academic Researchers
-2026-08-02 10:43:34,961 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:35,503 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:35,505 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:35,505 | INFO | agents.summarizer | Summarized: Accelerating scientific discovery with ChatGPT for Academic Researchers
-2026-08-02 10:43:35,505 | INFO | agents.summarizer | [4/30] Summarizing article: How GPT-5.6 fuses frontier intelligence with frontier efficiency
-2026-08-02 10:43:35,506 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:35,881 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:35,884 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:35,885 | INFO | agents.summarizer | Summarized: How GPT-5.6 fuses frontier intelligence with frontier efficiency
-2026-08-02 10:43:35,886 | INFO | agents.summarizer | [5/30] Summarizing article: Gemini API Managed Agents: 3.6 Flash, hooks, and more
-2026-08-02 10:43:35,886 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:36,494 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:36,496 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:36,496 | INFO | agents.summarizer | Summarized: Gemini API Managed Agents: 3.6 Flash, hooks, and more
-2026-08-02 10:43:36,496 | INFO | agents.summarizer | [6/30] Summarizing article: Scientific computing in the age of agentic AI
-2026-08-02 10:43:36,497 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:37,112 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:37,118 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:37,119 | INFO | agents.summarizer | Summarized: Scientific computing in the age of agentic AI
-2026-08-02 10:43:37,120 | INFO | agents.summarizer | [7/30] Summarizing article: Ten advances in mathematics and theoretical computer science
-2026-08-02 10:43:37,121 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:37,745 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:37,747 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:37,747 | INFO | agents.summarizer | Summarized: Ten advances in mathematics and theoretical computer science
-2026-08-02 10:43:37,747 | INFO | agents.summarizer | [8/30] Summarizing article: Advancing responsible AI across Europe
-2026-08-02 10:43:37,748 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:38,322 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:38,323 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:38,323 | INFO | agents.summarizer | Summarized: Advancing responsible AI across Europe
-2026-08-02 10:43:38,323 | INFO | agents.summarizer | [9/30] Summarizing article: Building abundant intelligence
-2026-08-02 10:43:38,324 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:38,731 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:38,733 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:38,733 | INFO | agents.summarizer | Summarized: Building abundant intelligence
-2026-08-02 10:43:38,734 | INFO | agents.summarizer | [10/30] Summarizing article: Univé builds an AI-ready workforce
-2026-08-02 10:43:38,735 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:39,357 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:39,358 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:39,358 | INFO | agents.summarizer | Summarized: Univé builds an AI-ready workforce
-2026-08-02 10:43:39,358 | INFO | agents.summarizer | [11/30] Summarizing article: rishabhpatre/content-generator-agent
-2026-08-02 10:43:39,358 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:39,871 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:39,876 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:39,877 | INFO | agents.summarizer | Summarized: rishabhpatre/content-generator-agent
-2026-08-02 10:43:39,877 | INFO | agents.summarizer | [12/30] Summarizing article: Muszic/daily-research
-2026-08-02 10:43:39,879 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:40,577 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:40,580 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:40,581 | INFO | agents.summarizer | Summarized: Muszic/daily-research
-2026-08-02 10:43:40,582 | INFO | agents.summarizer | [13/30] Summarizing article: Kiraaa1/ArXic-AI-Paper-Digest-Agent
-2026-08-02 10:43:40,584 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:41,309 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:41,312 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:41,312 | WARNING | agents.summarizer | Empty summary returned for article: Kiraaa1/ArXic-AI-Paper-Digest-Agent
-2026-08-02 10:43:41,313 | INFO | agents.summarizer | Skipped: Kiraaa1/ArXic-AI-Paper-Digest-Agent
-2026-08-02 10:43:41,313 | INFO | agents.summarizer | [14/30] Summarizing article: rishabhpatre/ai-news-agent
-2026-08-02 10:43:41,314 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:42,025 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:42,027 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:42,027 | INFO | agents.summarizer | Summarized: rishabhpatre/ai-news-agent
-2026-08-02 10:43:42,028 | INFO | agents.summarizer | [15/30] Summarizing article: lakshmidath-S/AI_News_Agent
-2026-08-02 10:43:42,029 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:42,740 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:42,742 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:42,742 | INFO | agents.summarizer | Summarized: lakshmidath-S/AI_News_Agent
-2026-08-02 10:43:42,742 | INFO | agents.summarizer | [16/30] Summarizing article: nrkoka786/agentgap
-2026-08-02 10:43:42,742 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:42,797 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:43:42,798 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
-2026-08-02 10:43:44,454 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:44,456 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:44,456 | INFO | agents.summarizer | Summarized: nrkoka786/agentgap
-2026-08-02 10:43:44,457 | INFO | agents.summarizer | [17/30] Summarizing article: Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident
-2026-08-02 10:43:44,457 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:44,504 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:43:44,505 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:43:48,270 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:48,272 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:48,272 | INFO | agents.summarizer | Summarized: Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident
-2026-08-02 10:43:48,272 | INFO | agents.summarizer | [18/30] Summarizing article: tkys/github-alt-trends
-2026-08-02 10:43:48,273 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:48,327 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:43:48,327 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:43:52,060 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:52,062 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:52,062 | INFO | agents.summarizer | Summarized: tkys/github-alt-trends
-2026-08-02 10:43:52,063 | INFO | agents.summarizer | [19/30] Summarizing article: ErcinDedeoglu/github-starboard
-2026-08-02 10:43:52,063 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:52,144 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:43:52,160 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:43:55,740 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:55,744 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:55,745 | INFO | agents.summarizer | Summarized: ErcinDedeoglu/github-starboard
-2026-08-02 10:43:55,745 | INFO | agents.summarizer | [20/30] Summarizing article: m96-chan/ai_research_dashboard
-2026-08-02 10:43:55,747 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:55,797 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:43:55,797 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:43:59,435 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:43:59,439 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:43:59,440 | INFO | agents.summarizer | Summarized: m96-chan/ai_research_dashboard
-2026-08-02 10:43:59,441 | INFO | agents.summarizer | [21/30] Summarizing article: ZW471/daily-ai-research-trends
-2026-08-02 10:43:59,442 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:43:59,503 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:43:59,504 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 2.000000 seconds
-2026-08-02 10:44:02,394 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:02,396 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:02,397 | INFO | agents.summarizer | Summarized: ZW471/daily-ai-research-trends
-2026-08-02 10:44:02,397 | INFO | agents.summarizer | [22/30] Summarizing article: danielwipert/arr
-2026-08-02 10:44:02,398 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:02,453 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:02,453 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
-2026-08-02 10:44:04,247 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:04,251 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:04,252 | INFO | agents.summarizer | Summarized: danielwipert/arr
-2026-08-02 10:44:04,253 | INFO | agents.summarizer | [23/30] Summarizing article: yuanzhe-jia/ai-paper-reader
-2026-08-02 10:44:04,255 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:04,320 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:04,321 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
-2026-08-02 10:44:06,088 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:06,090 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:06,090 | INFO | agents.summarizer | Summarized: yuanzhe-jia/ai-paper-reader
-2026-08-02 10:44:06,090 | INFO | agents.summarizer | [24/30] Summarizing article: alanyom/arxiv-ai-digest
-2026-08-02 10:44:06,090 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:06,259 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:06,261 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:44:09,729 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:09,734 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:09,735 | INFO | agents.summarizer | Summarized: alanyom/arxiv-ai-digest
-2026-08-02 10:44:09,735 | INFO | agents.summarizer | [25/30] Summarizing article: EalZz/IT-AI-NEWS
-2026-08-02 10:44:09,737 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:09,789 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:09,790 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
-2026-08-02 10:44:11,310 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:11,311 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:11,311 | INFO | agents.summarizer | Summarized: EalZz/IT-AI-NEWS
-2026-08-02 10:44:11,312 | INFO | agents.summarizer | [26/30] Summarizing article: xiejiangquan/ai-daily
-2026-08-02 10:44:11,312 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:11,926 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:11,930 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:11,932 | INFO | agents.summarizer | Summarized: xiejiangquan/ai-daily
-2026-08-02 10:44:11,933 | INFO | agents.summarizer | [27/30] Summarizing article: lakshminarasi-arch/NewinAI
-2026-08-02 10:44:11,935 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:11,993 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:11,993 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:44:15,515 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:15,518 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:15,519 | INFO | agents.summarizer | Summarized: lakshminarasi-arch/NewinAI
-2026-08-02 10:44:15,520 | INFO | agents.summarizer | [28/30] Summarizing article: mrsaddemon/iranwar2026
-2026-08-02 10:44:15,520 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:15,573 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:15,573 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 1.000000 seconds
-2026-08-02 10:44:17,353 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:17,356 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:17,357 | INFO | agents.summarizer | Summarized: mrsaddemon/iranwar2026
-2026-08-02 10:44:17,357 | INFO | agents.summarizer | [29/30] Summarizing article: krkmu/xrplf-activity-summary
-2026-08-02 10:44:17,358 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:17,416 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:17,417 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 4.000000 seconds
-2026-08-02 10:44:22,158 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:22,159 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:22,160 | INFO | agents.summarizer | Summarized: krkmu/xrplf-activity-summary
-2026-08-02 10:44:22,160 | INFO | agents.summarizer | [30/30] Summarizing article: Shreyas-bellary/Web-Scraping-AI-Bot
-2026-08-02 10:44:22,160 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
-2026-08-02 10:44:22,241 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
-2026-08-02 10:44:22,242 | INFO | groq._base_client | Retrying request to /openai/v1/chat/completions in 3.000000 seconds
-2026-08-02 10:44:26,058 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
-2026-08-02 10:44:26,062 | INFO | services.llm_service | Text generation successful.
-2026-08-02 10:44:26,062 | INFO | agents.summarizer | Summarized: Shreyas-bellary/Web-Scraping-AI-Bot
-2026-08-02 10:44:26,063 | INFO | agents.summarizer | Successfully summarized 29/30 articles.
-2026-08-02 10:44:26,064 | INFO | agents.summarizer | Summarizer Agent completed.
-2026-08-02 10:44:26,086 | INFO | agents.newsletter | starting NewsLetter Agent...
-2026-08-02 10:44:26,088 | INFO | agents.newsletter | Generating Newsletter....
-2026-08-02 10:44:26,089 | INFO | agents.newsletter | Grouped 30 newsletter articles into 2 sections.
-2026-08-02 10:44:26,091 | INFO | agents.newsletter | generated markdown newsletter.
-2026-08-02 10:44:26,092 | INFO | agents.newsletter | Newsletter generated successfully.
-2026-08-02 10:44:26,093 | INFO | agents.newsletter | Newsletter Agent completed.
-2026-08-02 10:44:26,094 | INFO | agents.writer | Starting Writer Agent...
-2026-08-02 10:44:26,101 | INFO | agents.writer | Newsletter saved to: newsletters\AI_Daily_News_2026-08-02.md
-2026-08-02 10:44:26,105 | INFO | agents.writer | Writer Agent Completed.
-2026-08-02 10:44:26,109 | INFO | __main__ | Workflow completed successfully
-2026-08-02 10:44:26,109 | INFO | __main__ | Execution ID : 37786aaa-ff01-4f09-b553-9685ed16526a
-2026-08-02 10:44:26,110 | INFO | __main__ | Status: pending
-2026-08-02 10:44:26,110 | INFO | __main__ | Collected Articles : 528
-2026-08-02 10:44:26,110 | INFO | __main__ | Processed Articles : 30
-2026-08-02 10:44:26,110 | INFO | __main__ | Queries : 7
-2026-08-02 10:44:26,111 | INFO | __main__ | Summarized Articles: 29
-2026-08-02 10:44:26,112 | INFO | __main__ | Saved Newsletter : newsletters\AI_Daily_News_2026-08-02.md
-2026-08-02 10:44:26,112 | INFO | __main__ | 
+2026-08-02 11:42:56,222 | INFO | __main__ | Workflow started.
+2026-08-02 11:42:56,268 | INFO | agents.planner | Planner node started.
+2026-08-02 11:42:56,269 | INFO | agents.planner | Planner generated 7 search queries.
+2026-08-02 11:42:56,270 | INFO | agents.collectors.rss | Reading RSS feed: OpenAI
+2026-08-02 11:42:56,270 | INFO | agents.collectors.rss | Fetching RSS feed: https://openai.com/news/rss.xml
+2026-08-02 11:42:57,362 | INFO | agents.collectors.rss | Kept 12/1105 recent article from OpenAI.
+2026-08-02 11:42:57,363 | INFO | agents.collectors.rss | Reading RSS feed: Google DeepMind
+2026-08-02 11:42:57,363 | INFO | agents.collectors.rss | Fetching RSS feed: https://blog.google/technology/ai/rss/
+2026-08-02 11:42:58,490 | INFO | agents.collectors.rss | Kept 3/20 recent article from Google DeepMind.
+2026-08-02 11:42:58,515 | INFO | agents.collectors.rss | Reading RSS feed: Hugging Face
+2026-08-02 11:42:58,638 | INFO | agents.collectors.rss | Fetching RSS feed: https://huggingface.co/blog/feed.xml
+2026-08-02 11:42:59,704 | INFO | agents.collectors.rss | Kept 5/834 recent article from Hugging Face.
+2026-08-02 11:43:07,548 | INFO | agents.collectors.github | Collected 46 unique GitHub repositories from 7 search queries (2 duplicates removed).
+2026-08-02 11:43:07,550 | INFO | agents.deduplicator | Deduplicator node started.
+2026-08-02 11:43:07,551 | INFO | agents.deduplicator | Deduplicating 66 collected articles
+2026-08-02 11:43:07,553 | INFO | agents.deduplicator | Deduplicated 66 articles into 66 unique articles (0 duplicates removed).
+2026-08-02 11:43:07,555 | INFO | agents.ranking | Ranking node started.
+2026-08-02 11:43:07,556 | INFO | agents.ranking | Ranking 66 collected articles.
+2026-08-02 11:43:07,558 | INFO | agents.ranking | Top ranked article: rishabhpatre/content-generator-agent (score: 0.960)
+2026-08-02 11:43:07,567 | INFO | agents.ranking | Ranking Completed.
+2026-08-02 11:43:07,570 | INFO | agents.categorizer | Starting Categorizer Agent...
+2026-08-02 11:43:07,573 | INFO | agents.categorizer | Categorizing 66 articles...
+2026-08-02 11:43:07,575 | INFO | agents.categorizer | Successfully categorized 66 articles.
+2026-08-02 11:43:07,582 | INFO | agents.categorizer | Categorizer Agent completed.
+2026-08-02 11:43:07,606 | INFO | agents.selection | Starting Selection Agent...
+2026-08-02 11:43:07,617 | INFO | agents.selection | Starting article selection...
+2026-08-02 11:43:07,622 | INFO | agents.selection | Grouped 66 articles into 2 source groups.
+2026-08-02 11:43:07,625 | INFO | agents.selection | official: selected 10/10 articles.
+2026-08-02 11:43:07,633 | INFO | agents.selection | research: selected 0/6 articles.
+2026-08-02 11:43:07,633 | INFO | agents.selection | open_source: selected 6/6 articles.
+2026-08-02 11:43:07,636 | INFO | agents.selection | ai_news: selected 0/4 articles.
+2026-08-02 11:43:07,638 | INFO | agents.selection | community: selected 0/4 articles.
+2026-08-02 11:43:07,639 | INFO | agents.selection | Selected 16 articles after applying quotas.
+2026-08-02 11:43:07,644 | INFO | agents.selection | Backfilled 14 articles.
+2026-08-02 11:43:07,648 | INFO | agents.selection | Final newsletter contains 30 articles.
+2026-08-02 11:43:07,648 | INFO | agents.selection | Selected 30 articles for newsletter.
+2026-08-02 11:43:07,665 | INFO | agents.selection | Selection Agent completed.
+2026-08-02 11:43:07,667 | INFO | agents.summarizer | Starting Summarizer Agent...
+2026-08-02 11:43:07,673 | INFO | agents.summarizer | Summarizing 30 articles...
+2026-08-02 11:43:07,673 | INFO | agents.summarizer | [1/30] Summarizing article: Advancing the price-performance frontier with GPT-5.6
+2026-08-02 11:43:07,674 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:09,411 | INFO | services.llm_service | Groq client initialized successfully.
+2026-08-02 11:43:11,002 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:11,031 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:11,032 | INFO | agents.summarizer | Summarized: Advancing the price-performance frontier with GPT-5.6
+2026-08-02 11:43:11,032 | INFO | agents.summarizer | [2/30] Summarizing article: How avatarin built a 24/7 retail agent with GPT-Realtime
+2026-08-02 11:43:11,033 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:11,613 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:11,614 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:11,614 | INFO | agents.summarizer | Summarized: How avatarin built a 24/7 retail agent with GPT-Realtime
+2026-08-02 11:43:11,615 | INFO | agents.summarizer | [3/30] Summarizing article: Accelerating scientific discovery with ChatGPT for Academic Researchers
+2026-08-02 11:43:11,615 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:12,198 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:12,199 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:12,199 | INFO | agents.summarizer | Summarized: Accelerating scientific discovery with ChatGPT for Academic Researchers
+2026-08-02 11:43:12,200 | INFO | agents.summarizer | [4/30] Summarizing article: How GPT-5.6 fuses frontier intelligence with frontier efficiency
+2026-08-02 11:43:12,200 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:13,019 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:13,020 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:13,021 | INFO | agents.summarizer | Summarized: How GPT-5.6 fuses frontier intelligence with frontier efficiency
+2026-08-02 11:43:13,021 | INFO | agents.summarizer | [5/30] Summarizing article: Gemini API Managed Agents: 3.6 Flash, hooks, and more
+2026-08-02 11:43:13,021 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:13,973 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:13,974 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:13,974 | INFO | agents.summarizer | Summarized: Gemini API Managed Agents: 3.6 Flash, hooks, and more
+2026-08-02 11:43:13,974 | INFO | agents.summarizer | [6/30] Summarizing article: Scientific computing in the age of agentic AI
+2026-08-02 11:43:13,975 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:14,753 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:14,754 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:14,754 | INFO | agents.summarizer | Summarized: Scientific computing in the age of agentic AI
+2026-08-02 11:43:14,755 | INFO | agents.summarizer | [7/30] Summarizing article: Ten advances in mathematics and theoretical computer science
+2026-08-02 11:43:14,755 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:15,414 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:15,415 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:15,415 | INFO | agents.summarizer | Summarized: Ten advances in mathematics and theoretical computer science
+2026-08-02 11:43:15,415 | INFO | agents.summarizer | [8/30] Summarizing article: Advancing responsible AI across Europe
+2026-08-02 11:43:15,415 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:16,194 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:16,197 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:16,197 | INFO | agents.summarizer | Summarized: Advancing responsible AI across Europe
+2026-08-02 11:43:16,197 | INFO | agents.summarizer | [9/30] Summarizing article: Building abundant intelligence
+2026-08-02 11:43:16,198 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:16,994 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:16,996 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:16,996 | INFO | agents.summarizer | Summarized: Building abundant intelligence
+2026-08-02 11:43:16,996 | INFO | agents.summarizer | [10/30] Summarizing article: Univé builds an AI-ready workforce
+2026-08-02 11:43:16,998 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:17,669 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:17,670 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:17,670 | INFO | agents.summarizer | Summarized: Univé builds an AI-ready workforce
+2026-08-02 11:43:17,670 | INFO | agents.summarizer | [11/30] Summarizing article: rishabhpatre/content-generator-agent
+2026-08-02 11:43:17,671 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:18,267 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:18,269 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:18,269 | INFO | agents.summarizer | Summarized: rishabhpatre/content-generator-agent
+2026-08-02 11:43:18,270 | INFO | agents.summarizer | [12/30] Summarizing article: Muszic/daily-research
+2026-08-02 11:43:18,270 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:18,914 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:18,917 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:18,917 | INFO | agents.summarizer | Summarized: Muszic/daily-research
+2026-08-02 11:43:18,918 | INFO | agents.summarizer | [13/30] Summarizing article: Kiraaa1/ArXic-AI-Paper-Digest-Agent
+2026-08-02 11:43:18,919 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:19,698 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:19,699 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:19,700 | INFO | agents.summarizer | Summarized: Kiraaa1/ArXic-AI-Paper-Digest-Agent
+2026-08-02 11:43:19,700 | INFO | agents.summarizer | [14/30] Summarizing article: rishabhpatre/ai-news-agent
+2026-08-02 11:43:19,701 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:20,568 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:20,569 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:20,570 | INFO | agents.summarizer | Summarized: rishabhpatre/ai-news-agent
+2026-08-02 11:43:20,571 | INFO | agents.summarizer | [15/30] Summarizing article: nrkoka786/agentgap
+2026-08-02 11:43:20,572 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:21,263 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:21,265 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:21,265 | INFO | agents.summarizer | Summarized: nrkoka786/agentgap
+2026-08-02 11:43:21,265 | INFO | agents.summarizer | [16/30] Summarizing article: Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident
+2026-08-02 11:43:21,266 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:22,328 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:22,330 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:22,330 | INFO | agents.summarizer | Summarized: Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident
+2026-08-02 11:43:22,330 | INFO | agents.summarizer | [17/30] Summarizing article: JersonUCB/github-trending-ai-pipeline
+2026-08-02 11:43:22,331 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:22,941 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:22,943 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:22,944 | INFO | agents.summarizer | Summarized: JersonUCB/github-trending-ai-pipeline
+2026-08-02 11:43:22,944 | INFO | agents.summarizer | [18/30] Summarizing article: tkys/github-alt-trends
+2026-08-02 11:43:22,945 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:23,771 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:23,773 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:23,773 | INFO | agents.summarizer | Summarized: tkys/github-alt-trends
+2026-08-02 11:43:23,773 | INFO | agents.summarizer | [19/30] Summarizing article: ErcinDedeoglu/github-starboard
+2026-08-02 11:43:23,774 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:24,460 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:24,462 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:24,462 | INFO | agents.summarizer | Summarized: ErcinDedeoglu/github-starboard
+2026-08-02 11:43:24,463 | INFO | agents.summarizer | [20/30] Summarizing article: m96-chan/ai_research_dashboard
+2026-08-02 11:43:24,463 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:25,347 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:25,348 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:25,348 | INFO | agents.summarizer | Summarized: m96-chan/ai_research_dashboard
+2026-08-02 11:43:25,348 | INFO | agents.summarizer | [21/30] Summarizing article: ZW471/daily-ai-research-trends
+2026-08-02 11:43:25,349 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:25,977 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:25,979 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:25,979 | INFO | agents.summarizer | Summarized: ZW471/daily-ai-research-trends
+2026-08-02 11:43:25,980 | INFO | agents.summarizer | [22/30] Summarizing article: danielwipert/arr
+2026-08-02 11:43:25,980 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:26,432 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:26,434 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:26,434 | INFO | agents.summarizer | Summarized: danielwipert/arr
+2026-08-02 11:43:26,434 | INFO | agents.summarizer | [23/30] Summarizing article: yuanzhe-jia/ai-paper-reader
+2026-08-02 11:43:26,435 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:27,151 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:27,152 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:27,152 | INFO | agents.summarizer | Summarized: yuanzhe-jia/ai-paper-reader
+2026-08-02 11:43:27,153 | INFO | agents.summarizer | [24/30] Summarizing article: alanyom/arxiv-ai-digest
+2026-08-02 11:43:27,153 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:27,790 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:27,791 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:27,793 | INFO | agents.summarizer | Summarized: alanyom/arxiv-ai-digest
+2026-08-02 11:43:27,794 | INFO | agents.summarizer | [25/30] Summarizing article: kamoras/civitas
+2026-08-02 11:43:27,795 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:28,427 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:28,428 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:28,429 | INFO | agents.summarizer | Summarized: kamoras/civitas
+2026-08-02 11:43:28,429 | INFO | agents.summarizer | [26/30] Summarizing article: Tensh1210/daily_ai
+2026-08-02 11:43:28,429 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:29,077 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:29,079 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:29,080 | INFO | agents.summarizer | Summarized: Tensh1210/daily_ai
+2026-08-02 11:43:29,080 | INFO | agents.summarizer | [27/30] Summarizing article: EalZz/IT-AI-NEWS
+2026-08-02 11:43:29,080 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:29,685 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:29,687 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:29,687 | INFO | agents.summarizer | Summarized: EalZz/IT-AI-NEWS
+2026-08-02 11:43:29,688 | INFO | agents.summarizer | [28/30] Summarizing article: xiejiangquan/ai-daily
+2026-08-02 11:43:29,688 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:30,232 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:30,233 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:30,233 | INFO | agents.summarizer | Summarized: xiejiangquan/ai-daily
+2026-08-02 11:43:30,233 | INFO | agents.summarizer | [29/30] Summarizing article: lakshminarasi-arch/NewinAI
+2026-08-02 11:43:30,233 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:30,971 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:30,972 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:30,973 | INFO | agents.summarizer | Summarized: lakshminarasi-arch/NewinAI
+2026-08-02 11:43:30,973 | INFO | agents.summarizer | [30/30] Summarizing article: mrsaddemon/iranwar2026
+2026-08-02 11:43:30,973 | INFO | utils.prompt_loader | Loaded prompt file: summarizer.md
+2026-08-02 11:43:31,782 | INFO | httpx | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-02 11:43:31,784 | INFO | services.llm_service | Text generation successful.
+2026-08-02 11:43:31,784 | WARNING | agents.summarizer | LLM returned an empty summary for: mrsaddemon/iranwar2026
+2026-08-02 11:43:31,784 | INFO | agents.summarizer | Summarized: mrsaddemon/iranwar2026
+2026-08-02 11:43:31,785 | INFO | agents.summarizer | Successfully summarized 30/30 articles.
+2026-08-02 11:43:31,785 | INFO | agents.summarizer | Summarizer Agent completed.
+2026-08-02 11:43:31,791 | INFO | agents.newsletter | Starting NewsLetter Agent...
+2026-08-02 11:43:31,791 | INFO | agents.newsletter | Generating Newsletter....
+2026-08-02 11:43:31,792 | INFO | agents.newsletter | Grouped 30 newsletter articles into 2 sections.
+2026-08-02 11:43:31,795 | INFO | agents.newsletter | Generated markdown newsletter.
+2026-08-02 11:43:31,796 | INFO | agents.newsletter | Newsletter generated successfully.
+2026-08-02 11:43:31,796 | INFO | agents.newsletter | Newsletter Agent completed.
+2026-08-02 11:43:31,797 | INFO | agents.writer | Starting Writer Agent...
+2026-08-02 11:43:31,801 | INFO | agents.writer | Newsletter saved to: newsletters\AI_Daily_News_2026-08-02.md
+2026-08-02 11:43:31,802 | INFO | agents.writer | Writer Agent Completed.
+2026-08-02 11:43:31,805 | INFO | __main__ | Workflow completed successfully
+2026-08-02 11:43:31,805 | INFO | __main__ | Execution ID : d7da3bc5-9cc0-49df-af55-bb9e8f195623
+2026-08-02 11:43:31,805 | INFO | __main__ | Status: completed
+2026-08-02 11:43:31,805 | INFO | __main__ | Collected Articles: 66
+2026-08-02 11:43:31,806 | INFO | __main__ | Processed Articles : 30
+2026-08-02 11:43:31,806 | INFO | __main__ | Queries : 7
+2026-08-02 11:43:31,806 | INFO | __main__ | Summarized Articles: 30
+2026-08-02 11:43:31,806 | INFO | __main__ | Newsletter Title: AI Daily News
+2026-08-02 11:43:31,806 | INFO | __main__ | Newsletter Date: 2026-08-02
+2026-08-02 11:43:31,807 | INFO | __main__ | Newsletter Articles: 30
+2026-08-02 11:43:31,807 | INFO | __main__ | Markdown Size: 11045 characters
+2026-08-02 11:43:31,807 | INFO | __main__ | Saved Newsletter : newsletters\AI_Daily_News_2026-08-02.md
+2026-08-02 11:43:31,808 | INFO | __main__ | 
 ============================================================

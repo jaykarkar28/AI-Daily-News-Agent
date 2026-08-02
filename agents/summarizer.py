@@ -93,32 +93,66 @@ class ArticleSummarizer:
     def _summarize_article(
         self,
         article: Article,
-    ) -> str | None:
+    ) -> str:
         """
         Generate an AI summary for a single article.
-        
+
+        Falls back to existing article information
+        if the LLM fails or returns an empty response.
+
         Args:
             article:
                 Article to summarize.
 
         Returns:
-            Generated summary or None if generation fails.
+            Best available summary.
         """
 
-        prompt = self._build_prompt(article)
+        prompt = self._build_prompt(
+            article,
+        )
 
-        summary = llm_service.generate_text(prompt)
+        summary = llm_service.generate_text(
+            prompt,
+        )
 
-        if summary is None or not summary.strip():
+        # -----------------------------
+        # Use LLM summary if valid
+        # -----------------------------
+        if summary and summary.strip():
 
-            logger.warning(
-                "Empty summary returned for article: %s",
-                article.title,
-            )
+            return summary.strip()
 
-            return None
-        
-        return summary.strip()
+        logger.warning(
+            "LLM returned an empty summary for: %s",
+            article.title,
+        )
+
+        # -----------------------------
+        # Fallback 1
+        # Original article summary
+        # -----------------------------
+        if article.summary and article.summary.strip():
+
+            return article.summary.strip()
+
+        # -----------------------------
+        # Fallback 2
+        # First part of article content
+        # -----------------------------
+        if article.content and article.content.strip():
+
+            return article.content[:400].strip()
+
+        # -----------------------------
+        # Final fallback
+        # -----------------------------
+        return (
+            "Summary unavailable. "
+            "Please refer to the original article."
+        )
+
+
     
     def _build_prompt(
             self,

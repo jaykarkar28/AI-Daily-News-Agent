@@ -40,15 +40,44 @@ def main() -> None:
 
     graph = build_graph()
 
-    initial_state = create_initial_state()
+    try:
 
-    final_state = graph.invoke(initial_state)
+        initial_state = create_initial_state()
 
+        initial_state[
+            "execution_info"
+        ].execution_status = (
+            ExecutionStatus.RUNNING
+        )
+
+
+        final_state = graph.invoke(initial_state)
+
+        final_state[
+            "execution_info"
+        ].execution_status = (
+            ExecutionStatus.COMPLETED
+        )
     
+    except Exception:
+
+        initial_state[
+            "execution_info"
+        ].execution_status = (
+            ExecutionStatus.FAILED
+        )
+
+        raise
+
     logger.info("Workflow completed successfully")
     logger.info(f"Execution ID : {final_state['execution_info'].execution_id}")
     logger.info(f"Status: {final_state['execution_info'].execution_status.value}")
-    logger.info(f"Collected Articles : {len(final_state['articles'])}")
+    logger.info(
+        "Collected Articles: %d",
+        final_state[
+            "execution_info"
+        ].total_articles,
+    )
     logger.info(f"Processed Articles : {len(final_state['processed_articles'])}")
     logger.info(f"Queries : {len(final_state['search_queries'])}")
     logger.info(
@@ -61,7 +90,7 @@ def main() -> None:
     )
 
     newsletter = final_state.get(
-        "newslletter",
+        "newsletter",
     )
 
     if newsletter:
@@ -101,3 +130,26 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

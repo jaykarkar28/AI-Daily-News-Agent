@@ -77,6 +77,13 @@ def deduplicator_node(
         state["articles"],
     )
 
+    state[
+        "execution_info"
+    ].total_articles = len(
+        unique_articles
+    )
+
+
     return {
         **state,
         "processed_articles": unique_articles,
