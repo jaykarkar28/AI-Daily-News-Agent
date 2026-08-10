@@ -15,7 +15,6 @@ setup_logging()
 
 logger = get_logger(__name__)
 
-
 logger.info("Workflow started.")
 
 def create_initial_state() -> NewsState:
@@ -150,26 +149,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

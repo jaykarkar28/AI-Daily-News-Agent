@@ -23,6 +23,13 @@ RSS_FEEDS = [
         "is_official": True,
     },
     {
+        "name": "Anthropic",
+        "url": "https://www.anthropic.com/news/rss.xml",
+        "group": SourceGroup.OFFICIAL,
+        "trust_score": 1.0,
+        "is_official": True,
+    },
+    {
         "name": "Google DeepMind",
         "url": "https://blog.google/technology/ai/rss/",
         "group": SourceGroup.OFFICIAL,
