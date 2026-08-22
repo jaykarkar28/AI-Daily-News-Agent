@@ -6,11 +6,15 @@ All configurable values should live here.
 
 import os
 
+from dotenv import load_dotenv
+
+
 from state.models import (
     Category,
     SourceGroup,
 )
 
+load_dotenv()
 
 # ============================================================
 # RSS CONFIGURATION
