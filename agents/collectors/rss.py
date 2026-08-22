@@ -14,6 +14,7 @@ from config.settings import (
     RSS_FEEDS,
     RSS_ARTICLE_MAX_AGE_DAYS,
     RSS_MAX_ARTICLES_PER_FEED,
+    RSS_SOURCE_QUOTAS,
 )
 
 from state.models import (
@@ -31,36 +32,77 @@ class RSSCollector(BaseCollector):
 
     def collect(self) -> list[Article]:
         """
-        Collect articles from every configured RSS feed.
+        Collect articles from configured RSS feeds.
+
+        OpenAI, Anthropic, and Google DeepMind are limited
+        to their latest 2 articles.
+
+        Hugging Face keeps the normal RSS configuration.
         """
 
         articles: list[Article] = []
 
         for feed in RSS_FEEDS:
 
-            logger.info("Reading RSS feed: %s", feed["name"])
+            logger.info(
+                "Reading RSS feed: %s",
+                feed["name"],
+            )
 
-            parsed_feed = self._fetch_feed(feed["url"])
+            parsed_feed = self._fetch_feed(
+                feed["url"],
+            )
 
             parsed_articles = self._parse_feed(
                 parsed_feed,
-                feed
+                feed,
             )
 
             recent_articles = self._filter_recent_articles(
                 parsed_articles,
             )
 
+            # --------------------------------------------------
+            # Apply source-specific quota.
+            #
+            # OpenAI / Anthropic / Google DeepMind:
+            # latest 2 articles only.
+            #
+            # Hugging Face:
+            # normal RSS limit.
+            # --------------------------------------------------
+
+            source_quota = RSS_SOURCE_QUOTAS.get(
+                feed["name"],
+            )
+
+            if source_quota is not None:
+
+                recent_articles = recent_articles[
+                    :source_quota
+                ]
+
+                logger.info(
+                    "Applied RSS source quota for %s: "
+                    "kept latest %d articles.",
+                    feed["name"],
+                    len(recent_articles),
+                )
+
             logger.info(
-                "Kept %d/%d recent article from %s.",
+                "Kept %d/%d recent articles from %s.",
                 len(recent_articles),
                 len(parsed_articles),
                 feed["name"],
             )
 
-            articles.extend(recent_articles)
+            articles.extend(
+                recent_articles,
+            )
 
         return articles
+            
+            
     
     def _fetch_feed(self, url: str) -> feedparser.FeedParserDict:
         """

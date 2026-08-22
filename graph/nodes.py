@@ -18,6 +18,7 @@ from agents.writer import writer_node
 from agents.github_filter import github_filter_node
 from agents.html_generator import html_generator_node
 from agents.email_sender import email_sender_node
+from agents.collectors.anthropic import anthropic_collector_node
 from typing import Any, Callable
 
 # Registry of workflow nodes.
@@ -30,6 +31,7 @@ from typing import Any, Callable
 WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "planner": planner_node,
     "rss_collector": rss_collector_node,
+    "anthropic_collector": anthropic_collector_node,
     "github_collector": github_collector_node,
     "github_filter": github_filter_node,
     "deduplicator": deduplicator_node,

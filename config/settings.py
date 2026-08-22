@@ -4,27 +4,22 @@ Application configuration.
 All configurable values should live here.
 """
 
+import os
+
 from state.models import (
     Category,
     SourceGroup,
 )
 
-import os
 
-# ------------------------------
+# ============================================================
 # RSS CONFIGURATION
-# ------------------------------
+# ============================================================
+
 RSS_FEEDS = [
     {
         "name": "OpenAI",
         "url": "https://openai.com/news/rss.xml",
-        "group": SourceGroup.OFFICIAL,
-        "trust_score": 1.0,
-        "is_official": True,
-    },
-    {
-        "name": "Anthropic",
-        "url": "https://www.anthropic.com/news/rss.xml",
         "group": SourceGroup.OFFICIAL,
         "trust_score": 1.0,
         "is_official": True,
@@ -48,34 +43,53 @@ RSS_FEEDS = [
 # Keep RSS articles published within the last N days.
 RSS_ARTICLE_MAX_AGE_DAYS = 7
 
-# Maximum number of articles to keep from each RSS feed.
+# Maximum number of articles collected from each RSS feed.
 RSS_MAX_ARTICLES_PER_FEED = 20
 
 REQUEST_TIMEOUT = 15
 
 USER_AGENT = "AI-Daily-News-Agent/1.0"
 
-# ------------------------------
-# Github Configuration
-# ------------------------------
+
+# ============================================================
+# RSS SOURCE QUOTAS
+# ============================================================
+
+# Maximum number of articles selected from each
+# individual RSS source during newsletter selection.
+
+RSS_SOURCE_QUOTAS = {
+    "OpenAI": 2,
+    "Google DeepMind": 2,
+    "Anthropic": 2,
+}
+
+
+# ============================================================
+# GITHUB CONFIGURATION
+# ============================================================
 
 GITHUB_API_BASE_URL = "https://api.github.com"
+
 GITHUB_API_VERSION = "2022-11-28"
+
 GITHUB_REPOSITORIES_PER_QUERY = 10
+
 GITHUB_TRUST_SCORE = 0.9
 
 
-
-# ------------------------------
-# GitHub Quality Filter
-# ------------------------------
+# ============================================================
+# GITHUB QUALITY FILTER
+# ============================================================
 
 # Minimum score required for a GitHub repository
 # to be considered AI-related.
+
 GITHUB_MIN_AI_SCORE = 8
 
 
 # AI-related keywords used while scoring repositories.
+
 GITHUB_AI_KEYWORDS = [
 
     # Core AI
@@ -131,6 +145,7 @@ GITHUB_AI_KEYWORDS = [
 # Trusted GitHub organizations.
 # Repositories from these owners receive
 # additional score.
+
 GITHUB_TRUSTED_OWNERS = [
 
     "openai",
@@ -148,6 +163,7 @@ GITHUB_TRUSTED_OWNERS = [
 
 # Keywords that indicate the repository
 # is probably NOT AI-related.
+
 GITHUB_BLACKLIST_KEYWORDS = [
 
     "crypto",
@@ -172,13 +188,16 @@ GITHUB_BLACKLIST_KEYWORDS = [
 ]
 
 
-# ------------------------------
-# Ranking Configuration
-# ------------------------------
+# ============================================================
+# RANKING CONFIGURATION
+# ============================================================
 
 RANKING_TRUST_WEIGHT = 0.40
+
 RANKING_FRESHNESS_WEIGHT = 0.30
+
 RANKING_KEYWORD_WEIGHT = 0.30
+
 
 RANKING_KEYWORDS = {
     "gpt": 1.0,
@@ -195,13 +214,15 @@ RANKING_KEYWORDS = {
     "mcp": 0.75,
 }
 
+
 FRESHNESS_MAX_DAYS = 7
+
 RANKING_MAX_ARTICLES = 50
 
 
-# ------------------------------
-# Category Configuration
-# ------------------------------
+# ============================================================
+# CATEGORY CONFIGURATION
+# ============================================================
 
 CATEGORY_KEYWORDS = {
 
@@ -286,9 +307,9 @@ CATEGORY_KEYWORDS = {
 }
 
 
-# ------------------------------
-# Gemini Configuration
-# ------------------------------
+# ============================================================
+# GEMINI CONFIGURATION
+# ============================================================
 
 GEMINI_MODEL = "gemini-2.5-flash"
 
@@ -301,16 +322,17 @@ GEMINI_TIMEOUT = 30
 GEMINI_MAX_RETRIES = 3
 
 
-# ------------------------------
-# Groq Configuration
-# ------------------------------
+# ============================================================
+# GROQ CONFIGURATION
+# ============================================================
 
 GROQ_API_KEYS = [
     os.getenv("GROQ_API_KEY_PRIMARY"),
     os.getenv("GROQ_API_KEY_BACKUP"),
 ]
 
-# Remove empty keys
+# Remove empty keys.
+
 GROQ_API_KEYS = [
     key
     for key in GROQ_API_KEYS
@@ -323,17 +345,23 @@ GROQ_TEMPERATURE = 0.2
 
 GROQ_MAX_OUTPUT_TOKENS = 300
 
-# Number of attempts per key
+# Number of attempts per key.
+
 GROQ_MAX_RETRIES = 3
 
-# ------------------------------
-# Newsletter Configuration
-# ------------------------------
+
+# ============================================================
+# NEWSLETTER CONFIGURATION
+# ============================================================
+
+# Maximum number of articles selected
+# for the final newsletter.
+
+NEWSLETTER_TOTAL_ARTICLES = 30
+
 
 # Maximum number of articles selected
 # from each editorial source group.
-
-NEWSLETTER_TOTAL_ARTICLES = 30
 
 SOURCE_GROUP_QUOTAS = {
     SourceGroup.OFFICIAL: 10,
@@ -344,9 +372,9 @@ SOURCE_GROUP_QUOTAS = {
 }
 
 
-# ------------------------------
-# Email Configuration
-# ------------------------------
+# ============================================================
+# EMAIL CONFIGURATION
+# ============================================================
 
 EMAIL_SMTP_SERVER = "smtp.gmail.com"
 
