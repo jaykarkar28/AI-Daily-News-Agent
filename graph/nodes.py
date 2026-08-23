@@ -19,6 +19,7 @@ from agents.collectors.github import github_collector_node
 from agents.collectors.arxiv import arxiv_collector_node
 from agents.collectors.ai_news import ai_news_collector_node
 from agents.collectors.huggingface import huggingface_collector_node
+from agents.collectors.web_search import web_search_collector_node
 
 # Processing Agents
 from agents.deduplicator import deduplicator_node
@@ -56,6 +57,7 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "arxiv_collector": arxiv_collector_node,
     "ai_news_collector": ai_news_collector_node,
     "huggingface_collector": huggingface_collector_node,
+    "web_search_collector": web_search_collector_node,
     
     # Processing
     "deduplicator": deduplicator_node,

@@ -616,3 +616,37 @@ ARXIV_DOMAIN_PENALTY_KEYWORDS = [
 
 # Score deducted for each matched domain-specific keyword.
 ARXIV_DOMAIN_PENALTY_SCORE = 4
+
+
+# ============================================================
+# WEB SEARCH CONFIGURATION
+# ============================================================
+
+# Tavily API key used for web search.
+TAVILY_API_KEY = os.getenv(
+    "TAVILY_API_KEY",
+)
+
+# Maximum number of search results returned
+# for each search query.
+WEB_SEARCH_MAX_RESULTS = 10
+
+# Keep articles published within the last N days.
+WEB_SEARCH_MAX_AGE_DAYS = 7
+
+# Maximum total articles collected during
+# a single workflow execution.
+WEB_SEARCH_MAX_ARTICLES = 20
+
+# Trust score assigned to general AI news
+# discovered through web search.
+WEB_SEARCH_TRUST_SCORE = 0.85
+
+
+# AI news queries used by the Web Search Collector.
+WEB_SEARCH_QUERIES = [
+    "latest artificial intelligence news",
+    "latest AI model launch news",
+    "latest generative AI news",
+    "latest AI agent news",
+]

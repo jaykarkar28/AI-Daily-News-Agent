@@ -100,6 +100,11 @@ def register_edges(
         "planner",
         "huggingface_collector",
     )
+    
+    workflow.add_edge(
+        "planner",
+        "web_search_collector",
+    )
 
     # --------------------------------------------------
     # Parallel Collectors → Deduplicator
@@ -132,6 +137,11 @@ def register_edges(
     
     workflow.add_edge(
         "huggingface_collector",
+        "deduplicator",
+    )
+    
+    workflow.add_edge(
+        "web_search_collector",
         "deduplicator",
     )
 
