@@ -25,36 +25,33 @@ def register_edges(
           ↓
         planner
           ↓
-        ┌───────────────────────────────┐
-        │                               │
-        ↓                               ↓
-    rss_collector              anthropic_collector
-        │                               │
-        └──────────────┬────────────────┘
-                       ↓
-                github_collector
-                       ↓
-                  deduplicator
-                       ↓
-                  github_filter
-                       ↓
-                    ranking
-                       ↓
-                  categorizer
-                       ↓
-                   selection
-                       ↓
-                  summarizer
-                       ↓
-                  newsletter
-                       ↓
-                 html_generator
-                       ↓
-                    writer
-                       ↓
-                 email_sender
-                       ↓
-                      END
+    ┌─────┼──────────┬───────────────────┐
+    ↓     ↓          ↓                   ↓
+    RSS  Anthropic  GitHub             arXiv
+    │     │          │                   │
+    └─────┴──────────┴─────────┬─────────┘
+                               ↓
+                         deduplicator
+                               ↓
+                          github_filter
+                               ↓
+                            ranking
+                               ↓
+                          categorizer
+                               ↓
+                           selection
+                               ↓
+                          summarizer
+                               ↓
+                          newsletter
+                               ↓
+                         html_generator
+                               ↓
+                            writer
+                               ↓
+                         email_sender
+                               ↓
+                              END
 
     Args:
         workflow:
@@ -71,7 +68,7 @@ def register_edges(
     )
 
     # --------------------------------------------------
-    # Planner → Collectors
+    # Planner → Parallel Collectors
     # --------------------------------------------------
 
     workflow.add_edge(
@@ -89,8 +86,23 @@ def register_edges(
         "github_collector",
     )
 
+    workflow.add_edge(
+        "planner",
+        "arxiv_collector",
+    )
+    
+    workflow.add_edge(
+        "planner",
+        "ai_news_collector",
+    )
+    
+    workflow.add_edge(
+        "planner",
+        "huggingface_collector",
+    )
+
     # --------------------------------------------------
-    # Collectors → Deduplicator
+    # Parallel Collectors → Deduplicator
     # --------------------------------------------------
 
     workflow.add_edge(
@@ -105,6 +117,21 @@ def register_edges(
 
     workflow.add_edge(
         "github_collector",
+        "deduplicator",
+    )
+
+    workflow.add_edge(
+        "arxiv_collector",
+        "deduplicator",
+    )
+    
+    workflow.add_edge(
+        "ai_news_collector",
+        "deduplicator",
+    )
+    
+    workflow.add_edge(
+        "huggingface_collector",
         "deduplicator",
     )
 

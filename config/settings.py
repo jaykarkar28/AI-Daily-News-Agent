@@ -387,3 +387,232 @@ EMAIL_SMTP_PORT = 587
 EMAIL_TIMEOUT = 30
 
 EMAIL_SUBJECT = "🤖 AI Daily News"
+
+
+# ------------------------------
+# Research / arXiv Configuration
+# ------------------------------
+
+# arXiv categories used for collecting the latest
+# AI and ML research papers
+
+
+ARXIV_CATEGORIES = [
+    "cs.AI",  # Artificial Intelligence
+    "cs.LG",  # Machine Learning
+    "cs.CL",  # Computation and Language
+    "cs.CV",  # Computer Vision and Pattern Recognition
+    "cs.NE",  # Neural and Evolutionary Computing
+    "cs.RO",  # Robotics
+    "stat.ML",  # Statistics - Machine Learning
+]
+
+
+# Maximum Number of papers requested from arXIV
+# before filtering
+ARXIV_MAX_RESULTS = 50
+
+# Keep only papers published within the last N days.
+ARXIV_MAX_AGE_DAYS = 7
+
+# Maximum number of papers collected
+# for a single workflow execution
+ARXIV_MAX_ARTICLES = 20
+
+# Trust score assigned to arXiv papers
+ARXIV_TRUST_SCORE = 0.95
+
+# Keywords used to identify AI/ML-related
+# research papers from arXiv.
+
+ARXIV_AI_KEYWORDS = [
+
+    # Core AI / ML
+    "artificial intelligence",
+    "machine learning",
+    "deep learning",
+    "neural network",
+    "neural networks",
+
+    # Large Language Models
+    "llm",
+    "large language model",
+    "large language models",
+    "language model",
+    "language models",
+    "gpt",
+    "transformer",
+
+    # Generative AI
+    "generative ai",
+    "generative model",
+    "diffusion",
+    "image generation",
+    "text generation",
+
+    # AI Agents
+    "agent",
+    "agentic",
+    "multi-agent",
+    "autonomous agent",
+    "tool use",
+
+    # NLP
+    "natural language processing",
+    "nlp",
+    "language understanding",
+    "text classification",
+
+    # Computer Vision
+    "computer vision",
+    "image recognition",
+    "object detection",
+    "image segmentation",
+    "vision-language",
+    "multimodal",
+
+    # Modern AI
+    "retrieval-augmented generation",
+    "rag",
+    "reasoning",
+    "foundation model",
+    "foundation models",
+    "fine-tuning",
+    "embedding",
+    "embeddings",
+
+    # AI Research
+    "benchmark",
+    "inference",
+    "model training",
+]
+
+
+# ------------------------------
+# arXiv AI Relevance Scoring
+# ------------------------------
+
+# High-priority topics for the AI Daily News newsletter.
+# These receive the highest relevance score.
+
+ARXIV_HIGH_PRIORITY_KEYWORDS = [
+    "large language model",
+    "large language models",
+    "llm",
+    "llms",
+    "generative ai",
+    "foundation model",
+    "foundation models",
+    "agentic ai",
+    "ai agent",
+    "ai agents",
+    "llm agent",
+    "llm agents",
+    "multi-agent",
+    "reasoning",
+    "chain of thought",
+    "retrieval-augmented generation",
+    "rag",
+    "multimodal",
+    "vision-language",
+    "language model",
+    "language models",
+]
+
+
+# Important modern AI topics.
+# These receive a medium relevance score.
+
+ARXIV_MEDIUM_PRIORITY_KEYWORDS = [
+    "transformer",
+    "generative model",
+    "diffusion model",
+    "diffusion models",
+    "text-to-image",
+    "image generation",
+    "video generation",
+    "tool use",
+    "computer use",
+    "model routing",
+    "fine-tuning",
+    "alignment",
+    "unlearning",
+    "synthetic data",
+    "reinforcement learning",
+    "self-improvement",
+    "embodied ai",
+]
+
+
+# General AI/ML terms.
+# These receive a lower relevance score because
+# they can appear in many domain-specific papers.
+
+ARXIV_LOW_PRIORITY_KEYWORDS = [
+    "artificial intelligence",
+    "machine learning",
+    "deep learning",
+    "neural network",
+    "neural networks",
+    "benchmark",
+    "inference",
+    "embedding",
+    "embeddings",
+    "computer vision",
+    "natural language processing",
+    "nlp",
+    "model training",
+]
+
+
+# Minimum total relevance score required for a paper
+# to be included in the AI Daily News pipeline.
+
+ARXIV_MIN_RELEVANCE_SCORE = 3
+
+
+# Score assigned to each keyword priority level.
+
+ARXIV_HIGH_PRIORITY_SCORE = 3
+ARXIV_MEDIUM_PRIORITY_SCORE = 2
+ARXIV_LOW_PRIORITY_SCORE = 1
+
+
+
+# ------------------------------
+# arXiv Domain Penalty Configuration
+# ------------------------------
+
+# Domain-specific topics that are usually less relevant
+# to a general AI Daily News newsletter.
+#
+# These topics are not completely excluded. Instead,
+# they receive a relevance penalty so that major AI
+# research can rank above domain-specific applications.
+
+ARXIV_DOMAIN_PENALTY_KEYWORDS = [
+    "medical imaging",
+    "clinical",
+    "patient",
+    "healthcare",
+    "electronic health records",
+    "myocardial",
+    "sleep monitoring",
+    "music information retrieval",
+    "music retrieval",
+    "travel behavior",
+    "weather-sensitive",
+    "radar sensing",
+    "human activity monitoring",
+    "industrial",
+    "travel",
+    "demand prediction",
+    "medical report",
+    "medical reports",
+    "medical",
+    "health",
+]
+
+
+# Score deducted for each matched domain-specific keyword.
+ARXIV_DOMAIN_PENALTY_SCORE = 4
