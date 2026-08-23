@@ -27,6 +27,8 @@ from agents.github_filter import github_filter_node
 from agents.ranking import ranking_node
 from agents.categorizer import categorizer_node
 from agents.selection import selection_node
+from agents.processing.deduplication import global_deduplication_node
+from agents.processing.relevance_filter import relevance_filter_node
 
 # Generation Agents
 from agents.summarizer import summarize_node
@@ -65,6 +67,8 @@ WORKFLOW_NODES: dict[str, Callable[..., Any]] = {
     "ranking": ranking_node,
     "categorizer": categorizer_node,
     "selection": selection_node,
+    "global_deduplication": global_deduplication_node,
+    "relevance_filter": relevance_filter_node,
 
     # Content Generation
     "summarizer": summarize_node,

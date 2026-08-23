@@ -151,11 +151,21 @@ def register_edges(
 
     workflow.add_edge(
         "deduplicator",
+        "global_deduplication",
+    )
+
+    workflow.add_edge(
+        "global_deduplication",
         "github_filter",
     )
 
     workflow.add_edge(
         "github_filter",
+        "relevance_filter",
+    )
+
+    workflow.add_edge(
+        "relevance_filter",
         "ranking",
     )
 
